@@ -736,7 +736,7 @@
                                     <div class="card-body">
                                     <div class="card-title d-flex align-items-start justify-content-between">
                                         <div class="avatar flex-shrink-0">
-                                        <img src="{{ template('template/assets/img/icons/unicons/paypal.png') }}" alt="Credit Card" class="rounded" />
+                                        <img src="{{ asset('template/assets/img/icons/unicons/paypal.png') }}" alt="Credit Card" class="rounded" />
                                         </div>
                                         <div class="dropdown">
                                         <button
