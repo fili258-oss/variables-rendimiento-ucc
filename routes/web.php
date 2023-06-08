@@ -17,5 +17,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view("/","layouts.app");
+Route::view("/","layouts.dashboard.app");
 Route::view("login","layouts.auth.login");

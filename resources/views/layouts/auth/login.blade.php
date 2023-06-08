@@ -118,30 +118,30 @@
                       </g>
                     </svg>
                   </span>
-                  <span class="app-brand-text demo text-body fw-bolder">Sneat</span>
+                  <span class="app-brand-text demo text-body fw-bolder">UniMetrics UCC</span>
                 </a>
               </div>
               <!-- /Logo -->
-              <h4 class="mb-2">Welcome to Sneat! 👋</h4>
-              <p class="mb-4">Please sign-in to your account and start the adventure</p>
+              <h4 class="mb-2">Bienvenido a UniMetrics UCC! 👋</h4>
+              <p class="mb-4">Inicie sesión en su cuenta y comience la experiencia.</p>
 
               <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email or Username</label>
+                  <label for="email" class="form-label">Usuario</label>
                   <input
                     type="text"
                     class="form-control"
                     id="email"
                     name="email-username"
-                    placeholder="Enter your email or username"
+                    placeholder="Ingrese el nombre de usuario"
                     autofocus
                   />
                 </div>
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
-                    <label class="form-label" for="password">Password</label>
+                    <label class="form-label" for="password">Contraseña</label>
                     <a href="auth-forgot-password-basic.html">
-                      <small>Forgot Password?</small>
+                      <small>¿Olvidaste tu contraseña?</small>
                     </a>
                   </div>
                   <div class="input-group input-group-merge">
@@ -159,20 +159,14 @@
                 <div class="mb-3">
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="remember-me" />
-                    <label class="form-check-label" for="remember-me"> Remember Me </label>
+                    <label class="form-check-label" for="remember-me"> Recuerdame </label>
                   </div>
                 </div>
                 <div class="mb-3">
-                  <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                  <button class="btn btn-primary d-grid w-100" type="submit">Ingresar</button>
                 </div>
               </form>
-
-              <p class="text-center">
-                <span>New on our platform?</span>
-                <a href="auth-register-basic.html">
-                  <span>Create an account</span>
-                </a>
-              </p>
+              
             </div>
           </div>
           <!-- /Register -->
@@ -181,15 +175,6 @@
     </div>
 
     <!-- / Content -->
-
-    <div class="buy-now">
-      <a
-        href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
-        target="_blank"
-        class="btn btn-danger btn-buy-now"
-        >Upgrade to Pro</a
-      >
-    </div>
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
