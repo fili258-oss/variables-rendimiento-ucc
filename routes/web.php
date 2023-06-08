@@ -1,5 +1,6 @@
 <?php
 
+use view;
 use Illuminate\Support\Facades\Route;
 
 /*
