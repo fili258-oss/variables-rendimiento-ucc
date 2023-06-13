@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,5 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view("/","layouts.dashboard.app");
-Route::view("login","layouts.auth.login");
+Auth::routes();
+//Route::view("/","layouts.dashboard.app");
+//Route::view("login","layouts.auth.login");
+
+
+Route::get('/escritorio', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/a', function () {
+    return view('welcome');
+});
+Route::view("home","home");
