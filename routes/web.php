@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CoursesReports\GeneralReportsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -17,15 +18,9 @@ use App\Http\Controllers\HomeController;
 Auth::routes();
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
-
-//Route::view("/","layouts.dashboard.app");
-//Route::view("login","layouts.auth.login");
 
 
 Route::get('/escritorio', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/a', function () {
-    return view('welcome');
-});
-Route::view("home","home");
+Route::get('/informes-cursos', [GeneralReportsController::class, 'index'])->name('reportsGeneral');

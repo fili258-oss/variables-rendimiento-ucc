@@ -1,4 +1,5 @@
 @extends("layouts.app")
+@section('title','UniMetrics | Indicadores Rendimiento UCC')
 @section("content")
 <div class="row">                            
     <div class="col-lg-8 mb-4 order-0">
