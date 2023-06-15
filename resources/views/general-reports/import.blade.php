@@ -1,5 +1,5 @@
 @extends("layouts.app")
-@section('title','UniMetrics | Reportes generales')
+@section('title','UniMetrics | Importar informes generales')
 @section("content")
 <form action="" method="post">
     <div class="row">
@@ -21,7 +21,7 @@
                 <option value="3">Three</option>
             </select>            
         </div>
-        <div class="col-md-6 col-lg-2 col-xl-2 order-2 mb-4">
+        <div class="col-md-6 col-lg-2 col-xl-3 order-2 mb-4">
             <label class="form-label" for="basic-icon-default-fullname">Curso</label>
             <select id="smallSelect" class="form-select form-select-sm">
                 <option>Small select</option>
@@ -30,7 +30,7 @@
                 <option value="3">Three</option>
             </select>            
         </div>
-        <div class="col-md-6 col-lg-2 col-xl-2 order-3 mb-4">
+        <div class="col-md-6 col-lg-2 col-xl-3 order-3 mb-4">
             <label class="form-label" for="basic-icon-default-fullname">Nivel Academico</label>            
                 <select id="smallSelect" class="form-select form-select-sm">
                     <option>Small select</option>
@@ -39,10 +39,13 @@
                     <option value="3">Three</option>
                 </select>            
         </div>
-        <div class="col-md-6 col-lg-4 col-xl-2 order-4 mt-4">            
-            <button class="btn btn-success btn-sm" type="button"><i class='bx bx-check-circle'></i></button>
-            <button class="btn btn-danger btn-sm" type="button"><i class="bx bx-trash"></i></button>            
-        </div>                        
+                        
+    </div>
+    <div class="row">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-4">
+            <button class="btn btn-primary me-md-2 btn-sm" type="button"><i class="bx bx-trash"></i></button>
+            <button class="btn btn-primary btn-sm" type="button"><i class='bx bx-check-circle'></i></button>    
+          </div>        
     </div>
 </form>
 <div class="row">

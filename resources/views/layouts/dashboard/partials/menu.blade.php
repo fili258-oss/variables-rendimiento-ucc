@@ -76,6 +76,12 @@
         <div data-i18n="Basic">Informe Cursos</div>
     </a>
     </li>
+    <li class="menu-item">
+        <a href="{{ route('reportsGeneral') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-import"></i>
+            <div data-i18n="Basic">Importar Informe</div>
+        </a>
+        </li>
     <!-- User interface -->
     <li class="menu-item">
     <a href="javascript:void(0)" class="menu-link menu-toggle">
