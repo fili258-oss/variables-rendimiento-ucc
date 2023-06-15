@@ -1,20 +1,10 @@
 @extends("layouts.app")
 @section('title','UniMetrics | Reportes generales')
 @section("content")
-<div class="row">
-    <div class="col-md-6 col-lg-3 col-xl-4 order-0 mb-4">
-        <label class="form-label" for="basic-icon-default-fullname">Período Academico</label>        
-        <select id="smallSelect" class="form-select form-select-sm">
-            <option>Small select</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
-    </div>
-    <div class="col-md-6 col-lg-3 col-xl-4 order-1 mb-4">
-        <label class="form-label" for="basic-icon-default-fullname">Programa Facultad</label>
-        <div class="input-group input-group-merge">
-            <span id="basic-icon-default-fullname2" class="input-group-text"><i class='bx bx-calendar'></i></span>
+<form action="" method="post">
+    <div class="row">
+        <div class="col-md-6 col-lg-2 col-xl-3 order-0 mb-4">
+            <label class="form-label" for="basic-icon-default-fullname">Período Academico</label>        
             <select id="smallSelect" class="form-select form-select-sm">
                 <option>Small select</option>
                 <option value="1">One</option>
@@ -22,33 +12,42 @@
                 <option value="3">Three</option>
             </select>
         </div>
-    </div>
-    <div class="col-md-6 col-lg-3 col-xl-4 order-2 mb-4">
-        <label class="form-label" for="basic-icon-default-fullname">Curso</label>
-        <div class="input-group input-group-merge">
-            <span id="basic-icon-default-fullname2" class="input-group-text"><i class='bx bx-calendar'></i></span>
+        <div class="col-md-6 col-lg-2 col-xl-3 order-1 mb-4">
+            <label class="form-label" for="basic-icon-default-fullname">Programa Facultad</label>            
             <select id="smallSelect" class="form-select form-select-sm">
                 <option>Small select</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
-                </select>
+            </select>            
         </div>
-    </div>
-    <div class="col-md-6 col-lg-3 col-xl-4 order-3 mb-4">
-        <label class="form-label" for="basic-icon-default-fullname">Nivel Academico</label>
-        <div class="input-group input-group-merge">
-            <span id="basic-icon-default-fullname2" class="input-group-text"><i class='bx bx-calendar'></i></span>
+        <div class="col-md-6 col-lg-2 col-xl-3 order-2 mb-4">
+            <label class="form-label" for="basic-icon-default-fullname">Curso</label>
             <select id="smallSelect" class="form-select form-select-sm">
                 <option>Small select</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
-                </select>
+            </select>            
         </div>
+        <div class="col-md-6 col-lg-2 col-xl-3 order-3 mb-4">
+            <label class="form-label" for="basic-icon-default-fullname">Nivel Academico</label>            
+                <select id="smallSelect" class="form-select form-select-sm">
+                    <option>Small select</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>            
+        </div>
+                        
     </div>
-                      
-</div>
+    <div class="row">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-4">
+            <button class="btn btn-primary me-md-2 btn-sm" type="button"><i class="bx bx-trash"></i></button>
+            <button class="btn btn-primary btn-sm" type="button"><i class="bx bx-plus"></i></button>
+          </div>        
+    </div>
+</form>
 <div class="row">
     <!-- Order Statistics -->
     <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
