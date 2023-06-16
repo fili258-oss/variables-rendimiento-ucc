@@ -19,8 +19,8 @@ Auth::routes();
 
 Route::get('/', function () {
     return view('auth.login');
-})->middleware('auth');
+});
 
 
-Route::get('/escritorio', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('escritorio', [App\Http\Controllers\HomeController::class, 'index'])->name('escritorio');
 Route::get('/informes-cursos', [GeneralReportsController::class, 'index'])->name('reportsGeneral')->middleware('auth');
