@@ -11,4 +11,9 @@ class GeneralReportsController extends Controller
     {
         return view('general-reports.index');
     }
+
+    public function import()
+    {
+        return view('general-reports.import');
+    }
 }

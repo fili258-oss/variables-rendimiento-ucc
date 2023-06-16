@@ -24,3 +24,4 @@ Route::get('/', function () {
 
 Route::get('escritorio', [App\Http\Controllers\HomeController::class, 'index'])->name('escritorio');
 Route::get('/informes-cursos', [GeneralReportsController::class, 'index'])->name('reportsGeneral')->middleware('auth');
+Route::get('/importar-informes', [GeneralReportsController::class, 'import'])->name('importReportsGeneral')->middleware('auth');
