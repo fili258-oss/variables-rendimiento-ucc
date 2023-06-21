@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-6 col-lg-2 col-xl-4 order-0 mb-4">
             <label class="form-label" for="basic-icon-default-fullname">Archivo informe general de cursos CSV</label>                    
-            <input class="form-control" type="file" id="formFile" />
+            <input class="form-control" type="file" id="formFile" accept="text/csv"/>
         </div>     
         <div class="col-md-6 col-lg-4 col-xl-2 order-1 mt-4">        
             <button class="btn btn-primary " type="button"><i class='bx bx-check-circle'></i> Importar</button>    
