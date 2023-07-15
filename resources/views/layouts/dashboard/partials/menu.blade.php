@@ -70,13 +70,13 @@
     <!-- Components -->
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Gestión Iformes</span></li>
     <!-- Cards -->
-    <li class="menu-item">
+    <li class="menu-item ">
     <a href="{{ route('reportsGeneral') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-chart"></i>
         <div data-i18n="Basic">Informe Cursos</div>
     </a>
     </li>
-    <li class="menu-item">
+    <li class="menu-item ">
         <a href="{{ route('importReportsGeneral') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-import"></i>
             <div data-i18n="Basic">Importar Informe</div>

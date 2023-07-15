@@ -7,9 +7,13 @@ use Illuminate\Http\Request;
 
 class GeneralReportsController extends Controller
 {
+    
+
     public function index()
-    {
-        return view('general-reports.index');
+    {        
+        return view('general-reports.index',[
+            'activeMenu' => '1'
+        ]);
     }
 
     public function import()

@@ -3,6 +3,7 @@
 @section("content")
 <form action="" method="post">
     <div class="row">
+        {{-- {{ $menu ? 'active' : '' }} --}}
         <div class="col-md-6 col-lg-2 col-xl-3 order-0 mb-4">
             <label class="form-label" for="basic-icon-default-fullname">Período Academico</label>        
             <select id="smallSelect" class="form-select form-select-sm">
