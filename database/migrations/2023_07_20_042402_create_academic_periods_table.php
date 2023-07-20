@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('general_reports_courses', function (Blueprint $table) {
+        Schema::create('academic_periods', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->timestamps();
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('general_reports_courses');
+        Schema::dropIfExists('academic_periods');
     }
 };
