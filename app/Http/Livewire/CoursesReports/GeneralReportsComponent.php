@@ -14,7 +14,7 @@ class GeneralReportsComponent extends Component
 
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    
+
     public $institution,
         $gradeAcademic,
         $site,
@@ -90,7 +90,7 @@ class GeneralReportsComponent extends Component
         $report = GeneralReportCourse::find($this->reportId);
         $report->delete();     
         $this->emit('close-modal');   
-        $this->emit('alert', ['type' => 'success', 'message' => 'Reporte eliminado correctamente.']);
+        $this->dispatchBrowserEvent('alert', ['type' => 'success', 'message' => 'Reporte eliminado correctamente.']);
         
     }
 
