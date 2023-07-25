@@ -20,7 +20,6 @@
         <link rel="stylesheet" href="{{asset('template/assets/vendor/fonts/boxicons.css')}}"/>
 
         <!-- Core CSS -->
-        
         @yield('styles')
         <link rel="stylesheet" href="{{asset('template/assets/vendor/css/core.css')}}" class="template-customizer-core-css" />
         <link rel="stylesheet" href="{{asset('template/assets/vendor/css/theme-default.css')}}" class="template-customizer-theme-css" />
@@ -62,7 +61,8 @@
                     <!-- Content -->
                     
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        {{ $slot }}                                 
+                        @yield('content')
+                        {{ $slot }}
                     </div>
                     <!-- / Content -->
 
@@ -84,9 +84,7 @@
 
         <!-- Core JS -->
         <!-- build:js assets/vendor/js/core.js -->
-        
         @yield('scripts')
-        
         <script src="{{asset('template/assets/vendor/libs/jquery/jquery.js')}}"></script>
         <script src="{{asset('template/assets/vendor/libs/popper/popper.js')}}"></script>
         <script src="{{asset('template/assets/vendor/js/bootstrap.js')}}"></script>
@@ -110,19 +108,5 @@
         <script async defer src="https://buttons.github.io/buttons.js"></script>
 
         @livewireScripts
-        <script type="text/javascript">
-
-            /* window.livewire.on('alert', param => {
-                    toastr[param['type']](param['message']);
-                }); */
-        
-            window.livewire.on('close-modal', () => {                
-                $('#edit-modal').modal('hide');
-                $('#delete-modal').modal('hide');
-                $('#info-modal').modal('hide');
-                $('#show-modal').modal('hide');
-            });
-        </script>
-
     </body>
 </html>
