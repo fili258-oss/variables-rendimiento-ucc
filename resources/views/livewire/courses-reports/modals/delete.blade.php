@@ -1,5 +1,4 @@
-<!-- Modal -->
-<div class="modal modal-danger fade" id="delete-modal" data-bs-backdrop="static" tabindex="-1">
+<div wire:ignore.self class="modal modal-danger fade" id="delete-modal" data-bs-backdrop="static" tabindex="-1">
     <div class="modal-dialog">
         <form class="modal-content">
             <div class="modal-header">
@@ -8,27 +7,16 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col mb-3">
-                        <label for="nameBackdrop" class="form-label">Name</label>
-                        <input type="text" id="nameBackdrop" class="form-control" placeholder="Enter Name" />
-                    </div>
-                </div>
-                <div class="row g-2">
-                    <div class="col mb-0">
-                        <label for="emailBackdrop" class="form-label">Email</label>
-                        <input type="text" id="emailBackdrop" class="form-control" placeholder="xxxx@xxx.xx" />
-                    </div>
-                    <div class="col mb-0">
-                        <label for="dobBackdrop" class="form-label">DOB</label>
-                        <input type="text" id="dobBackdrop" class="form-control" placeholder="DD / MM / YY" />
+                    <div class="col mb-6">
+                        <h3 for="nameBackdrop" class="form-control" style="color: red">¿Confirmas eliminar este registro?</h3>                        
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                    Close
+                <button type="button" class="btn btn-outline-secondary" wire:click="cancel()" data-bs-dismiss="modal">
+                    Cancelar
                 </button>
-                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-primary" wire:click="destroy()">Si, Borralo</button>
             </div>
         </form>
     </div>

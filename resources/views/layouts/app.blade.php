@@ -39,6 +39,10 @@
         <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
         <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
         <script src="{{asset('template/assets/js/config.js')}}"></script>
+
+        <!-- Toastr -->
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
         @livewireStyles
     </head>
 
@@ -62,7 +66,7 @@
                     <!-- Content -->
                     
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        {{ $slot }}                                 
+                        {{ $slot }}                             
                     </div>
                     <!-- / Content -->
 
@@ -108,13 +112,13 @@
 
         <!-- Place this tag in your head or just before your close body tag. -->
         <script async defer src="https://buttons.github.io/buttons.js"></script>
-
+        
         @livewireScripts
         <script type="text/javascript">
 
-            /* window.livewire.on('alert', param => {
+            window.livewire.on('alert', param => {
                     toastr[param['type']](param['message']);
-                }); */
+                });
         
             window.livewire.on('close-modal', () => {                
                 $('#edit-modal').modal('hide');
@@ -122,6 +126,11 @@
                 $('#info-modal').modal('hide');
                 $('#show-modal').modal('hide');
             });
+
+            window.livewire.on('close-modal', () => {
+            $('#delete-modal').modal('hide');
+            
+            });            
         </script>
 
     </body>

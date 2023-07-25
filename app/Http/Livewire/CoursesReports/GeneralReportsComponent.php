@@ -5,11 +5,16 @@ namespace App\Http\Livewire\CoursesReports;
 use App\Models\GeneralReportCourse;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
+use Livewire\WithPagination;
 
 class GeneralReportsComponent extends Component
 {
     public $search;
+    public $updateMode = false;
 
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+    
     public $institution,
         $gradeAcademic,
         $site,
@@ -42,7 +47,31 @@ class GeneralReportsComponent extends Component
 
     public function edit($id)
     {
-
+        $this->updateMode = true;
+        $report = GeneralReportCourse::find($id);
+        $this->institution = $report->institution;
+        $this->gradeAcademic = $report->gradeAcademic;
+        $this->site = $report->site;
+        $this->orgAcademic = $report->orgAcademic;
+        $this->idCourse = $report->idCourse;
+        $this->nameCourse = $report->nameCourse;
+        $this->levelCourse = $report->levelCourse;
+        $this->classNumber = $report->classNumber;
+        $this->academicPeriodId = $report->academicPeriodId;
+        $this->enrolleds = $report->enrolleds;
+        $this->enrolledWithoutCancellations = $report->enrolledWithoutCancellations;
+        $this->approved = $report->approved;
+        $this->notApproved = $report->notApproved;
+        $this->quantityAllotments = $report->quantityAllotments;
+        $this->approvedAllotments = $report->approvedAllotments;
+        $this->cancellations = $report->cancellations;
+        $this->repeaters = $report->repeaters;
+        $this->teacherId = $report->teacherId;
+        $this->teacherName = $report->teacherName;
+        $this->teacherNumberId = $report->teacherNumberId;
+        $this->hiring = $report->hiring;
+        $this->rating = $report->rating;
+        $this->reportId = $report->reportId;
     }
 
     public function update()
@@ -53,12 +82,16 @@ class GeneralReportsComponent extends Component
     public function delete($id)
     {
         $this->reportId = $id;
+        
     }
 
     public function destroy()
     {
         $report = GeneralReportCourse::find($this->reportId);
-        $report->delete();
+        $report->delete();     
+        $this->emit('close-modal');   
+        $this->emit('alert', ['type' => 'success', 'message' => 'Reporte eliminado correctamente.']);
+        
     }
 
     public function resetInputFields()
@@ -91,9 +124,10 @@ class GeneralReportsComponent extends Component
 
     public function cancel(){
 
-        $this->resetInputFields();
+        $this->updateMode = false;
+        $this->resetInputFields();        
         $this->resetErrorBag();
-        $this->resetValidation();
+        $this->resetValidation();        
         $this->emit('close-modal');
     }
 }

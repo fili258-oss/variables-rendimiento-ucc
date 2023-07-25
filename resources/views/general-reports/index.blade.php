@@ -1,6 +1,5 @@
 @extends("layouts.app")
 @section('title','UniMetrics | Reportes generales')
-@section("content")
 <form action="" method="post">
     <div class="row">
         {{-- {{ $menu ? 'active' : '' }} --}}
@@ -176,4 +175,3 @@
     </div>
     <!--/ Expense Overview -->
 </div>
-@endsection

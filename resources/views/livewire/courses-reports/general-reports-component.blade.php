@@ -75,11 +75,11 @@
                             <td>{{ $report->teacherName }}</td>
                             <td>
                                 <button class="btn btn-warning btn-sm" {{-- wire:click='showInfo({{ $user->iduser }})' --}} data-bs-toggle="modal" data-bs-target="#info-modal"><i class="fa fa-eye"></i> Ver</button>
-                                <button class="btn btn-primary btn-sm" {{-- wire:click='edit({{ $user->iduser }})' --}} data-bs-toggle="modal" data-bs-target="#edit-modal">
+                                <button class="btn btn-primary btn-sm" wire:click='edit({{ $report->id }})' data-bs-toggle="modal" data-bs-target="#edit-modal">
                                     <i class="fa fa-pencil-square"></i>
                                     Editar
                                 </button>
-                                <button class="btn btn-danger btn-sm" {{-- wire:click='delete({{ $user->iduser }})' --}} data-bs-toggle="modal" data-bs-target="#delete-modal">
+                                <button class="btn btn-danger btn-sm" wire:click='delete({{ $report->id }})' data-bs-toggle="modal" data-bs-target="#delete-modal">
                                     <i class="fa fa-trash"></i>
                                     Eliminar
                                 </button>
@@ -102,7 +102,7 @@
                 <!-- Basic Pagination -->
                 <nav aria-label="Page navigation">
                     <ul class="pagination">
-                        {{ $reports->links() }}
+                        {{$reports->links()}}
                     </ul>
                 </nav>
             </div>
