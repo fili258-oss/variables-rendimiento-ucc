@@ -5,18 +5,6 @@
     @include('livewire.courses-reports.modals.delete')
 
     @section('title','UniMetrics | Importar informes generales')    
-    @if(Session::has('success'))
-
-    <div class="bs-toast toast toast-placement-ex m-2 fade bg-success top-0 end-0 show" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
-        <div class="toast-header">
-            <i class='bx bx-check-shield me-2'></i>
-            <small>Importación finalizada</small>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body">{{ Session::get('success') }}</div>
-
-    </div>
-    @endif
     <form action="{{ route('importReports') }}" method="POST" name="importform" enctype="multipart/form-data">
         @csrf
         <div class="row">
@@ -73,8 +61,7 @@
                             <td>{{ $report->repeaters }}</td>
                             <td>{{ $report->teacherId }}</td>
                             <td>{{ $report->teacherName }}</td>
-                            <td>
-                                <button class="btn btn-warning btn-sm" {{-- wire:click='showInfo({{ $user->iduser }})' --}} data-bs-toggle="modal" data-bs-target="#info-modal"><i class="fa fa-eye"></i> Ver</button>
+                            <td>                                
                                 <button class="btn btn-primary btn-sm" wire:click='edit({{ $report->id }})' data-bs-toggle="modal" data-bs-target="#edit-modal">
                                     <i class="fa fa-pencil-square"></i>
                                     Editar

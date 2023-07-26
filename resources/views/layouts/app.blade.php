@@ -77,7 +77,7 @@
                     <!-- Content -->
 
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        {{ $slot }}
+                        @yield('content')
                     </div>
                     <!-- / Content -->
 

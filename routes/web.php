@@ -5,6 +5,7 @@ use App\Http\Controllers\CoursesReports\ImportExportReportGeneralController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Livewire\CouresReports\ChartsReportsComponent;
 use App\Http\Livewire\CoursesReports\GeneralReportsComponent;
 
 /*
@@ -24,8 +25,11 @@ Route::get('/', function () {
 });
 
 
-Route::get('escritorio', [App\Http\Controllers\HomeController::class, 'index'])->name('escritorio');
-Route::get('/informes-cursos', [GeneralReportsController::class, 'index'])->name('reportsGeneral')->middleware('auth');
+Route::middleware(['auth:sanctum', 'verified'])->get('/escritorio', function () {
+return view('general-reports.index');
+})->name('escritorio');
+
+Route::get('/informes-cursos', [ChartsReportsComponent::class])->name('reportsGeneral')->middleware('auth');
 Route::post('/import', [ImportExportReportGeneralController::class, 'import'])->name('importReports')->middleware('auth');
 
 //Route::get('export', 'export')->name('export');
