@@ -27,7 +27,7 @@ class ImportExportReportGeneralController extends Controller
     {         
         $import = new ImportReportsCourses;                    
         Excel::import($import, request()->file('file'));
-        $count = $import->getRowCount();
+        $count = $import->getRowCount();        
         return redirect()->route('importReportsGeneral')->with('success', $count.' Datos importados exitosamente');
     }
 }

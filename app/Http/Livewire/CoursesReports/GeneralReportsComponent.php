@@ -39,10 +39,17 @@ class GeneralReportsComponent extends Component
         $rating,
         $reportId;
 
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
         $reports = GeneralReportCourse::where('nameCourse', 'like', '%' . $this->search . '%')->orderBy('id', 'desc')->paginate(15);        
-        return view('livewire.courses-reports.general-reports-component',['reports' => $reports]);
+        return view('livewire.courses-reports.general-reports-component',['reports' => $reports])
+            ->extends('layouts.app')
+            ->section('content');
     }
 
     public function edit($id)

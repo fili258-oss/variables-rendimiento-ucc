@@ -5,6 +5,9 @@
     @include('livewire.courses-reports.modals.delete')
 
     @section('title','UniMetrics | Importar informes generales')    
+    @if(Session::has('success'))
+        <div class="alert alert-success"> {{ Session::get('success') }}</div>
+    @endif
     <form action="{{ route('importReports') }}" method="POST" name="importform" enctype="multipart/form-data">
         @csrf
         <div class="row">
@@ -95,5 +98,9 @@
             </div>
         </div>
     </div>    
+    
 </div>
+<script>
+
+</script>
 

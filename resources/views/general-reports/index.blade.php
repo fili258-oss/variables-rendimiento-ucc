@@ -1,4 +1,4 @@
-@extends("layouts.app")
+@extends("layouts.dashboard.master")
 @section('title','UniMetrics | Reportes generales')
 @section('content')
 <form action="" method="post">

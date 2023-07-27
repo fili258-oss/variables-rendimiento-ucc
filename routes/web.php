@@ -5,7 +5,7 @@ use App\Http\Controllers\CoursesReports\ImportExportReportGeneralController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Livewire\CouresReports\ChartsReportsComponent;
+use App\Http\Livewire\CoursesReports\ChartsReportsComponent;
 use App\Http\Livewire\CoursesReports\GeneralReportsComponent;
 
 /*
@@ -24,20 +24,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/escritorio', function () {
-return view('general-reports.index');
-})->name('escritorio');
-
-Route::get('/informes-cursos', [ChartsReportsComponent::class])->name('reportsGeneral')->middleware('auth');
+Route::get('/escritorio', [HomeController::class, 'index'])->name('escritorio');
+Route::get('/importar-informes', GeneralReportsComponent::class)->name('importReportsGeneral')->middleware('auth');
 Route::post('/import', [ImportExportReportGeneralController::class, 'import'])->name('importReports')->middleware('auth');
 
-//Route::get('export', 'export')->name('export');
-/* Route::controller(ImportExportReportGeneralController::class)->group(function(){
-    Route::get('/importar-informes', 'index')->name('importReportsGeneral')->middleware('auth');
-    Route::get('reports-export', 'export')->name('users.export');
-    Route::post('reports-import', 'import')->name('importReports');
-    
-}); */
-
-Route::get('/importar-informes', GeneralReportsComponent::class)->name('importReportsGeneral')->middleware('auth');
+Route::get('/informes-cursos', ChartsReportsComponent::class)->name('reportsGeneral')->middleware('auth');

@@ -8,6 +8,8 @@ class ChartsReportsComponent extends Component
 {
     public function render()
     {
-        return view('livewire.courses-reports.charts-reports-component');
+        return view('livewire.courses-reports.charts-reports-component')
+            ->extends('layouts.app')
+            ->section('content');
     }
 }
