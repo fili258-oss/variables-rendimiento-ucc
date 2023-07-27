@@ -25,9 +25,9 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <div class="d-flex flex-column align-items-center gap-1">
                         <h2 class="mb-2">8,258</h2>
-                        <span>Total Orders</span>
+                        <span>Gráfico personalizado</span>
                     </div>
-                    <div id="orderStatisticsChart"></div>
+                    <div id="chart"></div>
                 </div>
                 <ul class="p-0 m-0">
                     <li class="d-flex mb-4 pb-1">
@@ -101,7 +101,7 @@
                     <div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">
                         <div class="d-flex p-4 pt-3">
                             <div class="avatar flex-shrink-0 me-3">
-                                <img src="../assets/img/icons/unicons/wallet.png" alt="User" />
+                                <img src="{{ asset('template/assets/img/icons/unicons/wallet.png') }}" alt="User" />
                             </div>
                             <div>
                                 <small class="text-muted d-block">Total Balance</small>
