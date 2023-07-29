@@ -28,4 +28,4 @@ Route::get('/escritorio', [HomeController::class, 'index'])->name('escritorio');
 Route::get('/importar-informes', GeneralReportsComponent::class)->name('importReportsGeneral')->middleware('auth');
 Route::post('/import', [ImportExportReportGeneralController::class, 'import'])->name('importReports')->middleware('auth');
 
-Route::get('/informes-cursos', ChartsReportsComponent::class)->name('reportsGeneral')->middleware('auth');
+Route::get('/informes-cursos', [GeneralReportsController::class, 'reports'])->name('reportsGeneral')->middleware('auth');

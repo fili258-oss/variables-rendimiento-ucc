@@ -9,11 +9,9 @@ class GeneralReportsController extends Controller
 {
     
 
-    public function index()
+    public function reports()
     {        
-        return view('general-reports.index',[
-            'activeMenu' => '1'
-        ]);
+        return view('general-reports.stats');
     }
 
     public function import()

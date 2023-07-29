@@ -9,11 +9,14 @@ class ApexCharts extends Component
     public $chartId;
     public $seriesData;
     public $categories;
+    public $seriesName;
 
-    public function __construct($chartId, $seriesData, $categories) {
+    public function __construct($chartId, $seriesData, $categories, $seriesName = '') {
         $this->chartId = $chartId;
         $this->seriesData = $seriesData;
         $this->categories = $categories;
+        $this->seriesName = $seriesName ?? 'Series';
+        
     }
 
     public function render() {

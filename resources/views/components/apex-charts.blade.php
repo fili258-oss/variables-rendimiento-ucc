@@ -1,22 +1,47 @@
-<div id="{!! $chartId !!}"></div>
+<div id="{{ $chartId }}"></div>
 
 @push('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
-    <script>
-        (function () {
-            const chart = new ApexCharts(document.getElementById(`{!! $chartId !!}`), window['{{ $chartId }}-options']);
-            chart.render();
-            document.addEventListener('livewire:load', () => {
-                @this.on(`refreshChartData-{!! $chartId !!}`, (chartData) => {
-                    chart.updateOptions({
-                        xaxis: {
-                            categories: chartData.categories,
-                        }
-                    });
-                    chart.updateSeries(chartData.series);
-                })
+<script>
+    (function () {
+        const options = {
+            chart: {
+                id: 2,
+                type: 'bar'
+            },
+            plotOptions: {
+                bar: {
+                    barHeight: '100%',
+                    distributed: true,
+                    dataLabels: {
+                        // position: 'bottom'
+                    },
+                }
+            },
+            xaxis: {
+                type: 'category',
+                categories: ["Hola","Hola","Hola","Hola","Hola",]
+            },
+            series: [{
+                name: 'Totales',
+                data: [2.3, 3.1, 4.0, 10.1, 4.0]
+            }],
+            // colors: ['#5c6ac4', '#007ace'],
+        }
+        const chart = new ApexCharts(document.getElementById("#chartId"), options);
+        chart.render();
+        /* document.addEventListener('livewire:load', () => {
+            @this.on(`refreshChartData-{!! $chartId !!}`, (chartData) => {
+                chart.updateOptions({
+                    xaxis: {
+                        categories: chartData.categories
+                    }
+                });
+                chart.updateSeries([{
+                    data: chartData.seriesData,
+                    name: chartData.seriesName,
+                }]);
             });
-        }());
-    </script>
+        }); */
+    }());
+</script>
 @endpush
