@@ -29,3 +29,4 @@ Route::get('/importar-informes', GeneralReportsComponent::class)->name('importRe
 Route::post('/import', [ImportExportReportGeneralController::class, 'import'])->name('importReports')->middleware('auth');
 
 Route::get('/informes-cursos', [GeneralReportsController::class, 'reports'])->name('reportsGeneral')->middleware('auth');
+Route::post('/graficar-reportes', [GeneralReportsController::class, 'drawingChart'])->name('generateCharts')->middleware('auth');

@@ -1,12 +1,13 @@
 @extends("layouts.dashboard.master")
 @section('title','UniMetrics | Reportes gráficas')
 @section('content')
-<form action="" method="post">
+<form action="{{ route('generateCharts') }}" method="POST">
+  @csrf
     <div class="row">        
         <div class="col-md-6 col-lg-2 col-xl-2 order-0 mb-4">
             <label class="form-label" for="basic-icon-default-fullname">Período Academico</label>  
               
-            <select id="smallSelect" class="form-select form-select-sm">
+            <select id="period" class="form-select form-select-sm" name="period">
               @if($periods)
                 @foreach ($periods as $period)
                   <option value="{{ $period->academicPeriodId }}">{{ $period->academicPeriodId }}</option>
@@ -18,7 +19,7 @@
         </div>
         <div class="col-md-6 col-lg-2 col-xl-2 order-1 mb-4">
             <label class="form-label" for="basic-icon-default-fullname">Programa Facultad</label>                        
-            <select id="smallSelect" class="form-select form-select-sm">
+            <select id="faculty" class="form-select form-select-sm" name="faculty">
               @if($facultys)
                 @foreach ($facultys as $faculty)
                 <option value="{{ $faculty->orgAcademic }}">{{ $faculty->orgAcademic }}</option>
@@ -30,7 +31,7 @@
         </div>
         <div class="col-md-6 col-lg-2 col-xl-4 order-2 mb-4">
             <label class="form-label" for="basic-icon-default-fullname">Curso</label>
-            <select id="smallSelect" class="form-select form-select-sm">
+            <select id="course" class="form-select form-select-sm" name="course">
               @if($courses)
                 @foreach ($courses as $course)
                   <option value="{{ $course->nameCourse }}">{{ $course->nameCourse }}</option>
@@ -42,7 +43,7 @@
         </div>
         <div class="col-md-6 col-lg-2 col-xl-2 order-3 mb-4">
             <label class="form-label" for="basic-icon-default-fullname">Nivel Academico</label>            
-                <select id="smallSelect" class="form-select form-select-sm">
+                <select id="level" class="form-select form-select-sm" name="level">
                 @if($levelsCourses)
                   @foreach ($levelsCourses as $level)
                     <option value="{{ $level->levelCourse }}">{{ $level->levelCourse }}</option>
@@ -53,7 +54,7 @@
                 </select>            
         </div>
         <div class="col-md-6 col-lg-4 col-xl-2 order-4 mt-4">            
-            <button class="btn btn-success btn-sm" type="button"><i class='bx bx-check-circle'></i></button>
+            <input type="submit" class="btn btn-success btn-sm" value="Consultar">
             <button class="btn btn-danger btn-sm" type="button"><i class="bx bx-trash"></i></button>            
         </div>                        
     </div>

@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\DB;
 class GeneralReportsController extends Controller
 {
     
+    public $period;
+    public $faculty;
+    public $course;
+    public $levelsCourse;
 
     public function reports()
     {        
@@ -44,6 +48,11 @@ class GeneralReportsController extends Controller
     {
         $levelsCourses = DB::table('general_report_courses')->select('levelCourse')->distinct()->get();
         return $levelsCourses;
+    }
+
+    public function drawingChart(Request $request)
+    {
+        dd($request);
     }
 
     public function import()
