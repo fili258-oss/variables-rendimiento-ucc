@@ -14,6 +14,7 @@ class ChartsReportsComponent extends Component
 
     public function render()
     {
+        $this->total = "1200";
         return view('livewire.courses-reports.charts-reports-component');
     }
 }
