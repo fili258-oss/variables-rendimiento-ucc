@@ -9,18 +9,22 @@ use Illuminate\Support\Facades\DB;
 class GeneralReportsController extends Controller
 {
     
-    public $period;
-    public $faculty;
-    public $course;
-    public $levelsCourse;
+    public $coursesAprobeds;
+    public $coursesNotAprobeds;
+    public $cancellations;
+    public $repeaters;
+    public $totales;
 
     public function reports()
     {        
+        $this->totales = '';
+
         return view('general-reports.stats', [
             'periods' => $this->getAcademicsPeriods(),
             'facultys' => $this->getFaculty(),
             'courses' => $this->getCourses(),
-            'levelsCourses' => $this->getLevelsAcademics()
+            'levelsCourses' => $this->getLevelsAcademics(),
+            'totales' => $this->totales              
 
         ]);
     }
@@ -51,8 +55,30 @@ class GeneralReportsController extends Controller
     }
 
     public function drawingChart(Request $request)
-    {
-        dd($request);
+    {        
+        
+        $this->totales = DB::table('general_report_courses')
+        ->where([
+            ['academicPeriodId', '=', $request->period],
+            ['orgAcademic', '=', $request->faculty],
+            ['nameCourse', '=', $request->course],
+            ['levelCourse', '=', $request->level]
+            
+        ])->selectRaw('SUM(repeaters) as repeaters')
+          ->selectRaw('SUM(approved) as approveds')
+          ->selectRaw('SUM(notApproved) as notApproveds')
+          ->selectRaw('SUM(cancellations) as cancellations')
+          ->first();
+         
+        return view('general-reports.stats', [
+            'periods' => $this->getAcademicsPeriods(),
+            'facultys' => $this->getFaculty(),
+            'courses' => $this->getCourses(),
+            'levelsCourses' => $this->getLevelsAcademics(),
+            'totales' => $this->totales
+
+        ]);
+        
     }
 
     public function import()

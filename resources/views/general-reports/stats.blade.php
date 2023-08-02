@@ -8,18 +8,20 @@
             <label class="form-label" for="basic-icon-default-fullname">Período Academico</label>  
               
             <select id="period" class="form-select form-select-sm" name="period">
+              <option value="">Seleccione una opción</option>
               @if($periods)
                 @foreach ($periods as $period)
                   <option value="{{ $period->academicPeriodId }}">{{ $period->academicPeriodId }}</option>
                 @endforeach  
               @else
                 <option value=""></option>
-              @endif                            
+              @endif                                          
             </select>
         </div>
         <div class="col-md-6 col-lg-2 col-xl-2 order-1 mb-4">
             <label class="form-label" for="basic-icon-default-fullname">Programa Facultad</label>                        
             <select id="faculty" class="form-select form-select-sm" name="faculty">
+              <option value="">Seleccione una opción</option>
               @if($facultys)
                 @foreach ($facultys as $faculty)
                 <option value="{{ $faculty->orgAcademic }}">{{ $faculty->orgAcademic }}</option>
@@ -32,6 +34,7 @@
         <div class="col-md-6 col-lg-2 col-xl-4 order-2 mb-4">
             <label class="form-label" for="basic-icon-default-fullname">Curso</label>
             <select id="course" class="form-select form-select-sm" name="course">
+              <option value="">Seleccione una opción</option>
               @if($courses)
                 @foreach ($courses as $course)
                   <option value="{{ $course->nameCourse }}">{{ $course->nameCourse }}</option>
@@ -44,13 +47,14 @@
         <div class="col-md-6 col-lg-2 col-xl-2 order-3 mb-4">
             <label class="form-label" for="basic-icon-default-fullname">Nivel Academico</label>            
                 <select id="level" class="form-select form-select-sm" name="level">
-                @if($levelsCourses)
-                  @foreach ($levelsCourses as $level)
-                    <option value="{{ $level->levelCourse }}">{{ $level->levelCourse }}</option>
-                  @endforeach   
-                @else
-                  <option value=""></option>
-                @endif                                                        
+                <option value="">Seleccione una opción</option>
+                  @if($levelsCourses)
+                    @foreach ($levelsCourses as $level)
+                      <option value="{{ $level->levelCourse }}">{{ $level->levelCourse }}</option>
+                    @endforeach   
+                  @else
+                    <option value=""></option>
+                  @endif                                                        
                 </select>            
         </div>
         <div class="col-md-6 col-lg-4 col-xl-2 order-4 mt-4">            
@@ -73,13 +77,13 @@
                                 <img src="{{ asset("template/assets/img/icons/unicons/wallet.png") }}" alt="User" />
                             </div>
                             <div>
-                                <small class="text-muted d-block">Total Balance</small>
+                                <small class="text-muted d-block">Total variables</small>
                                 <div class="d-flex align-items-center">
-                                    <h6 class="mb-0 me-1">$459.10</h6>
-                                    <small class="text-success fw-semibold">
-                                        <i class="bx bx-chevron-up"></i>
-                                        42.9%
-                                    </small>
+                                    <h6 class="mb-0 me-1">Aprobados: {{ $totales !=null ? $totales->approveds: '0' }}</h6>
+                                    <h6 class="mb-0 me-1">No aprobados: {{ $totales !=null ? $totales->notApproveds: '0' }}</h6>
+                                    <h6 class="mb-0 me-1">Cancelaciones: {{ $totales !=null ? $totales->cancellations: '0' }}</h6>
+                                    <h6 class="mb-0 me-1">Repitentes: {{ $totales !=null ? $totales->repeaters: '0' }}</h6>
+                                  
                                 </div>
                             </div>
                         </div>
@@ -90,7 +94,7 @@
                                 
                             </div>
                             <div>
-                                <p class="mb-n1 mt-1">Reporte This Week</p>
+                                <p class="mb-n1 mt-1">Reporte del curso de </p>
                                 <small class="text-muted">$39 less than last week</small>
                             </div>
                         </div>
@@ -104,10 +108,15 @@
 @endsection
 
 @section('scripts')
-<script>                        
+<script>      
+  let approveds = {{ $totales !=null ? $totales->approveds: 0 }} 
+  let notApproveds = {{ $totales !=null ? $totales->notApproveds: 0 }}
+  let cancellations= {{ $totales !=null ? $totales->cancellations: 0 }}
+  let repeaters= {{ $totales !=null ? $totales->repeaters: 0 }}
+
     var options = {
           series: [{
-          data: [400, 430, 448, 470]
+          data: [approveds, notApproveds, cancellations, repeaters]
         }],
           chart: {
           type: 'bar',
