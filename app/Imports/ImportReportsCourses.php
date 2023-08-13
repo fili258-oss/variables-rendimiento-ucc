@@ -18,7 +18,7 @@ class ImportReportsCourses implements ToModel, WithHeadingRow
 
     public function model(array $row)
     {        
-        ++$this->rows;
+        ++$this->rows;        
         return new GeneralReportCourse([
             'institution'     => $row['institucion'],
             'gradeAcademic'    => $row['grado_academico'],

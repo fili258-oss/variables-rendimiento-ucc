@@ -1,7 +1,7 @@
 @extends("layouts.dashboard.master")
-@section('title','UniMetrics | Reportes gráficas')
+@section('title','UniMetrics | Reportes estudiantes')
 @section('content')
-<form action="{{ route('generateCharts') }}" method="POST">
+<form action="{{-- {{ route('generateCharts') }} --}}" method="POST">
   @csrf
     <div class="row">        
         <div class="col-md-6 col-lg-2 col-xl-2 order-0 mb-4">

@@ -10,14 +10,7 @@ use App\Exports\ExportReportsCourses;
 use App\Imports\ImportReportsCourses;
 
 class ImportExportReportGeneralController extends Controller
-{
-         
-    public function index()
-    {
-        $reports = DB::table('general_report_courses')->orderBy('id', 'desc')->paginate(15);
-        return view('general-reports.import-export.import', ['reports' => $reports]);
-    }
-
+{             
     public function export() 
     {
         return Excel::download(new ExportReportsCourses, 'exportreportscourses.xlsx');

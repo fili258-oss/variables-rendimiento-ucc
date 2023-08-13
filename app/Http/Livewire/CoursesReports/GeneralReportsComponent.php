@@ -9,8 +9,7 @@ use Livewire\WithPagination;
 
 class GeneralReportsComponent extends Component
 {
-    public $search;
-    public $updateMode = false;
+    public $search;    
 
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
@@ -53,8 +52,7 @@ class GeneralReportsComponent extends Component
     }
 
     public function edit($id)
-    {
-        $this->updateMode = true;
+    {        
         $report = GeneralReportCourse::find($id);
         $this->institution = $report->institution;
         $this->gradeAcademic = $report->gradeAcademic;
@@ -206,9 +204,7 @@ class GeneralReportsComponent extends Component
 
     }
 
-    public function cancel(){
-
-        $this->updateMode = false;
+    public function cancel(){        
         $this->resetInputFields();        
         $this->resetErrorBag();
         $this->resetValidation();        
