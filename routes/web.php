@@ -6,9 +6,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndividualCoursesReports\ImportExportIndividualReportsController;
+use App\Http\Controllers\IndividualCoursesReports\IndividualReportsController;
 use App\Http\Livewire\CoursesReports\ChartsReportsComponent;
 use App\Http\Livewire\CoursesReports\GeneralReportsComponent;
 use App\Http\Livewire\IndividualCoursesReports\IndividualCoursesComponent;
+use App\Http\Livewire\IndividualCoursesReports\IndividualStudentsComponent;
+use App\Http\Livewire\Users\UsersComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,5 +35,11 @@ Route::get('/importar-informes-individuales', IndividualCoursesComponent::class)
 Route::post('/import-report-general', [ImportExportReportGeneralController::class, 'import'])->name('importReports')->middleware('auth');
 Route::post('/import-report-individual', [ImportExportIndividualReportsController::class, 'import'])->name('importReportsIndividuals')->middleware('auth');
 
-Route::get('/informes-cursos', [GeneralReportsController::class, 'reports'])->name('reportsGeneral')->middleware('auth');
+Route::get('/informes-cursos-generales', [GeneralReportsController::class, 'reports'])->name('reportsGeneral')->middleware('auth');
 Route::post('/graficar-reportes', [GeneralReportsController::class, 'drawingChart'])->name('generateCharts')->middleware('auth');
+
+Route::get('/informes-cursos-individuales', IndividualStudentsComponent::class)->name('reportsIndividual')->middleware('auth');
+
+/* Gestion de usuarios */
+
+Route::get('lista-usuarios', UsersComponent::class)->name('usersList')->middleware('auth');

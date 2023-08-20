@@ -33,7 +33,13 @@
             <i class="menu-icon tf-icons bx bx-user"></i>
             <div data-i18n="Basic">Imp Informe Individual</div>
         </a>
-    </li>           
+    </li>
+    <li class="menu-item ">
+        <a href="{{ route('reportsIndividual') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-chart"></i>
+            <div data-i18n="Basic">Informe Individual</div>
+        </a>
+        </li>           
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Gestión Usuarios</span></li> 
     <!-- User interface -->
     <li class="menu-item">
@@ -43,7 +49,7 @@
         </a>
         <ul class="menu-sub">
             <li class="menu-item">
-            <a href="ui-accordion.html" class="menu-link">
+            <a href="{{ route('usersList') }}" class="menu-link">
                 <div data-i18n="Accordion">Usuarios</div>
             </a>
             </li>

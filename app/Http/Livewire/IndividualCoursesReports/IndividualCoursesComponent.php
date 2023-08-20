@@ -41,7 +41,7 @@ class IndividualCoursesComponent extends Component
     }        
     public function render()
     {
-        $reports = IndividualReportCourse::where('nameCourse', 'like', '%' . $this->search . '%')->orderBy('id', 'desc')->paginate(15);
+        $reports = IndividualReportCourse::where('firstName', 'like', '%' . $this->search . '%')->orderBy('id', 'desc')->paginate(15);
         return view('livewire.individual-courses-reports.individual-courses-component',['reports' => $reports])->extends('layouts.app')->section('content');
     }
 

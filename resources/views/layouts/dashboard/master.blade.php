@@ -132,6 +132,7 @@
                 $('#delete-modal').modal('hide');
                 $('#info-modal').modal('hide');
                 $('#show-modal').modal('hide');
+                $('#create-modal').modal('hide');
             });
 
             window.livewire.on('close-modal', () => {
