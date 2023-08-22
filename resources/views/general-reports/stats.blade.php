@@ -1,4 +1,4 @@
-@extends("layouts.dashboard.master")
+@extends("layouts.dashboard.master",['active' => 'menu activo'])
 @section('title','UniMetrics | Reportes gráficas')
 @section('content')
 <form action="{{ route('generateCharts') }}" method="POST">

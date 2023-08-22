@@ -41,5 +41,4 @@ Route::post('/graficar-reportes', [GeneralReportsController::class, 'drawingChar
 Route::get('/informes-cursos-individuales', IndividualStudentsComponent::class)->name('reportsIndividual')->middleware('auth');
 
 /* Gestion de usuarios */
-
 Route::get('lista-usuarios', UsersComponent::class)->name('usersList')->middleware('auth');

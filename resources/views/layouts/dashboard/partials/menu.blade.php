@@ -14,7 +14,7 @@
 
 <ul class="menu-inner py-1">
     <!-- Components -->
-    <li class="menu-header small text-uppercase"><span class="menu-header-text">Gestión Iformes</span></li>
+    <li class="menu-header small text-uppercase"><span class="menu-header-text">Gestión Iformes </span></li>
     <!-- Cards -->
     <li class="menu-item ">
     <a href="{{ route('reportsGeneral') }}" class="menu-link">
