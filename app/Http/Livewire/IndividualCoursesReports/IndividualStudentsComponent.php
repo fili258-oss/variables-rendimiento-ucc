@@ -23,8 +23,6 @@ class IndividualStudentsComponent extends Component
     public function render()
     {
         
-        
-        
         $this->periods = IndividualReportCourse::select('academicPeriod')->distinct()->get();
         if ($this->selectedStatus == 0) {
             $this->ranges = '>=';
@@ -37,12 +35,14 @@ class IndividualStudentsComponent extends Component
             ['nameCourse', '=', $this->selectedCourse],
             ['qualification', $this->ranges, 3.0],
         ])->paginate(15);
+        
+        $reportsWithoutPagination = $this->getReportsGeneralNoPagination();
 
         return view('livewire.individual-courses-reports.individual-students-component',[            
             'reports' => $reports,
             'periods' => $this->periods,  
-            'countReportsAproveds' => $this->getPercentageAproveds($reports),                      
-            'countReportsReproveds' => $this->getPercentageReproveds($reports)                   
+            'countReportsAproveds' => $this->getPercentageAproveds($reportsWithoutPagination),                      
+            'countReportsReproveds' => $this->getPercentageReproveds($reportsWithoutPagination)                   
 
         ])->extends('layouts.app')->section('content');
     }
@@ -84,6 +84,16 @@ class IndividualStudentsComponent extends Component
             ['academicPeriod', '=', $this->selectedPeriod],
             ['gradeAcademic', '=', $this->selectedFaculty],
             ['nameCourse', '=', $this->selectedCourse]])->get();
+        return $reportsTotal;
+    }
+
+    public function getReportsGeneralNoPagination()
+    {
+        $reportsTotal  = IndividualReportCourse::where([
+            ['academicPeriod', '=', $this->selectedPeriod],
+            ['gradeAcademic', '=', $this->selectedFaculty],
+            ['nameCourse', '=', $this->selectedCourse],
+            ['qualification', $this->ranges, 3.0],])->get();
         return $reportsTotal;
     }
 
