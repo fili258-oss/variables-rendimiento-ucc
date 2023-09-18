@@ -27,8 +27,7 @@
                             <th>#</th>
                             <th>Nombre</th>
                             <th>correo electrónico</th>
-                            <th>Perfil</th>
-                            <th>Estado</th>                            
+                            <th>Perfil</th>                                                        
                             <th>Avatar</th>                            
                             <th>Acciones</th>
                         </tr>
@@ -39,12 +38,7 @@
                             <th scope="row">{{ $user->id }}</th>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->profile }}</td>
-                            <td>
-                                <span class="badge {{ $user->status == 'ACTIVE' ? 'bg-label-success' : 'bg-label-danger'}} text-uppercase">
-                                    {{ $user->status }}
-                                </span>    
-                            </td>                            
+                            <td>perfil</td>                                                       
                             <td><img src="{{ asset('storage/'.$user->image) }}" class="w-px-40 h-auto rounded-circle"></td>
                             <td>                                
                                 <button class="btn btn-primary btn-sm" wire:click='edit({{ $user->id }})' data-bs-toggle="modal" data-bs-target="#edit-modal">                                    

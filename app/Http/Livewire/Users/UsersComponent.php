@@ -6,24 +6,27 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 
 class UsersComponent extends Component
 {
     use WithFileUploads;
     public $search;
-    
+
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    
+
     public
         $name,
         $email,
         $photo,
-        $image,        
-        $profile,
-        $status,
+        $image,
         $password,
-        $userId;
+        $userId,
+        $roles,
+        $roleId,
+        $profile;
 
     public function updatingSearch()
     {
@@ -32,6 +35,7 @@ class UsersComponent extends Component
 
     public function render()
     {
+        $this->roles = Role::all();
         $users = User::where('name', 'like', '%' . $this->search . '%')->orderBy('id', 'desc')->paginate(15);
         return view('livewire.users.users-component', [
             'users' => $users
@@ -43,101 +47,101 @@ class UsersComponent extends Component
         $this->validate([
             'name' => 'required|max:30',
             'email' => 'required|unique:users|email',
-            'profile' => 'required',
-            'status' => 'required',                        
+            'roleId' => 'required',
             'password' => 'required|min:5'
 
         ], [], [
             'name' => 'nombre',
             'email' => 'correo',
-            'profile' => 'perfil',
-            'status' => 'estado',            
-            'password' => 'contraseña'       
+            'roleId' => 'perfil',            
+            'password' => 'contraseña'
         ]);
 
         $user = new User();
         $user->name = $this->name;
         $user->email = $this->email;
-        $user->profile = $this->profile;
-        $user->status = $this->status;
+
+        $role = Role::find($this->roleId);
+        $user->assignRole($role->name);
+
         $user->password = bcrypt($this->password);
-        
+
         if (!empty($this->photo)) {
             $tmpImg = $user->image;
-                if ($tmpImg != null && file_exists('storage/users/' . $tmpImg)) {
-                    unlink('storage/users/' . $tmpImg);
-                }
+            if ($tmpImg != null && file_exists('storage/users/' . $tmpImg)) {
+                unlink('storage/users/' . $tmpImg);
+            }
 
             $customAvatarName = uniqid() . '.' . $this->photo->extension();
             $this->photo->storeAs('public/users/', $customAvatarName);
             $user->image = 'users/' . $customAvatarName;
         }
 
-        $user->save();  
+        $user->save();
 
         $this->emit('close-modal');
         $this->dispatchBrowserEvent('alert', ['type' => 'success', 'message' => 'Usuario creado exitosamente']);
-        $this->resetInputFields();              
-        
+        $this->resetInputFields();
     }
 
     public function edit($id)
     {
-        $user = User::find($id);        
-        if($user != ''){
+
+        $user = User::find($id);
+        $rol = $user->getRoleNames();
+        if ($user != '') {
             $this->userId = $user->id;
             $this->name = $user->name;
             $this->email = $user->email;
-            $this->profile = $user->profile;
-            $this->status = $user->status;
-            $this->image = $user->image;                        
+            $this->image = $user->image;
+            $this->profile = $rol;
+               
         }
+       
     }
 
     public function update()
     {
         $this->validate([
             'name' => 'required|max:30',
-            'email' => 'required|unique:users,email,'.$this->userId,
-            'profile' => 'required',
-            'status' => 'required',                        
+            'email' => 'required|unique:users,email,' . $this->userId,
+            'roleId' => 'required',
             'password' => 'min:5'
 
         ], [], [
             'name' => 'nombre',
             'email' => 'correo',
-            'profile' => 'perfil',
-            'status' => 'estado',            
-            'password' => 'contraseña'       
+            'roleId' => 'perfil',
+            'password' => 'contraseña'
         ]);
 
         $user = User::find($this->userId);
         $user->name = $this->name;
         $user->email = $this->email;
-        $user->profile = $this->profile;
-        $user->status = $this->status;
-
+        
+        $role = Role::find($this->roleId);
+        $user->assignRole($role->name);
+        
         if (!empty($this->photo)) {
 
             $tmpImg = $user->image;
-                if ($tmpImg != null && file_exists('storage/users/' . $tmpImg)) {
-                    unlink('storage/users/' . $tmpImg);
-                }
+            if ($tmpImg != null && file_exists('storage/users/' . $tmpImg)) {
+                unlink('storage/users/' . $tmpImg);
+            }
 
             $customAvatarName = uniqid() . '.' . $this->photo->extension();
             $this->photo->storeAs('public/users/', $customAvatarName);
             $user->image = 'users/' . $customAvatarName;
         }
 
-        if($this->password!=''){
-            $user->password = bcrypt($this->password); 
+        if ($this->password != '') {
+            $user->password = bcrypt($this->password);
         }
 
         $user->update();
         $this->emit('close-modal');
         $this->dispatchBrowserEvent('alert', ['type' => 'success', 'message' => 'Usuario actualizado exitosamente']);
         $this->resetInputFields();
-
     }
 
     public function delete($id)
@@ -157,15 +161,14 @@ class UsersComponent extends Component
     {
         $this->name = '';
         $this->email = '';
-        $this->profile = '';
-        $this->status = '';
         $this->password = '';
         $this->photo = '';
         $this->userId = '';
         
     }
 
-    public function cancel(){
+    public function cancel()
+    {
 
         $this->resetInputFields();
         $this->resetErrorBag();

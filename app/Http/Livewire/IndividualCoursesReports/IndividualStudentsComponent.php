@@ -23,7 +23,7 @@ class IndividualStudentsComponent extends Component
     public function render()
     {
         
-        $this->periods = IndividualReportCourse::select('academicPeriod')->distinct()->get();
+        $this->periods = DB::table('individual_report_courses')->select('academicPeriod')->distinct()->pluck('academicPeriod');
         if ($this->selectedStatus == 0) {
             $this->ranges = '>=';
         }else{
@@ -51,7 +51,7 @@ class IndividualStudentsComponent extends Component
     {   
         $percentageApproved = 0;
         $reportsTotal = $this->getReportsGeneral();
-        if (!is_null($this->selectedStatus) && $this->selectedStatus == 0) {
+        if (!is_null($this->selectedStatus) && !is_null($this->selectedPeriod) && !is_null($this->selectedFaculty) && !is_null($this->selectedCourse) && $this->selectedStatus == 0) {
             $countReportsGenerals = count($reportsTotal);
             $countReportsAproveds = count($reports);
             $aprovedsDivided = $countReportsAproveds/$countReportsGenerals;
@@ -67,7 +67,7 @@ class IndividualStudentsComponent extends Component
     {
         $percentageReproved = 0;
         $reportsTotal = $this->getReportsGeneral();
-        if (!is_null($this->selectedStatus) && $this->selectedStatus == 1) {
+        if (!is_null($this->selectedStatus) && !is_null($this->selectedPeriod) && !is_null($this->selectedFaculty) && !is_null($this->selectedCourse) && $this->selectedStatus == 1) {
             $countReportsGenerals = count($reportsTotal);
             $countReportsReproveds = count($reports);
             $reprovedsDivided = $countReportsReproveds/$countReportsGenerals;
@@ -99,17 +99,29 @@ class IndividualStudentsComponent extends Component
 
     public function updatedselectedPeriod($academicPeriodKey)
     {                
-        if(!is_null($academicPeriodKey)){
-            $this->facultys = IndividualReportCourse::select('gradeAcademic')->where('academicPeriod', $academicPeriodKey)->distinct()->get();
-        }                    
+        if(!is_null($academicPeriodKey)){            
+            $this->facultys = DB::table('individual_report_courses')->select('gradeAcademic')->where('academicPeriod', '=', $academicPeriodKey)->distinct()->pluck('gradeAcademic');
+        }
+        
+        if(empty($academicPeriodKey)){
+            $this->facultys = null;
+            $this->courses = null;
+            $this->selectedFaculty = null;
+            $this->selectedCourse = null;
+            
+        }
     }
 
     public function updatedselectedFaculty($gradeAcadmicKey)
-    {              
-        $this->courses = IndividualReportCourse::select('nameCourse')->where('gradeAcademic', $gradeAcadmicKey)->distinct()->get();                          
-        /* if(!is_null($gradeAcadmicKey)){
-            
+    {       
+        if (!is_null($gradeAcadmicKey)) {
+            $this->courses = DB::table('individual_report_courses')->select('nameCourse')->where('gradeAcademic', $gradeAcadmicKey)->distinct()->pluck('nameCourse');                          
+        }   
+        
+        /* if (empty($gradeAcadmicKey)) {
+                        
         } */
+        
     }    
 
     public function clearQuery()

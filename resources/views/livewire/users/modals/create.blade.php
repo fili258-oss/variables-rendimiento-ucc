@@ -24,16 +24,18 @@
                 </div>
                 <div class="row g-2">
                     <div class="col-12 col-lg-6 mb-6">
-                        <label for="profile" class="form-label">Perfil</label>
-                        <select name="profile" class="form-select" wire:model="profile">
+                        <label for="roleId" class="form-label">Perfil</label>
+                        <select name="roleId" class="form-select" wire:model="roleId">
                             <option value="">Seleccione una opción</option>
-                            <option value="ADMIN">Administrador</option>
-                            <option value="EMPLOYEE">Consultor</option>
+                            @foreach($roles as $role)
+                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                            @endforeach
+                                                           
                         </select>
-                        @error('profile')
+                        @error('roleId')
                         <span class="text-warning">{{ $message }}</span>
                         @enderror
-                    </div>
+                    </div>                    
                     <div class="col-12 col-lg-6 mb-6">
                         <label for="password" class="form-label">Contraseña</label>
                         <input type="password" id="password" class="form-control" wire:model="password" placeholder="Ingrese una contraseña" />
@@ -42,19 +44,9 @@
                         @enderror
                     </div>
                 </div>
-                <div class="row g-2">
-                    <div class="col-12 col-lg-6 mb-6">
-                        <label for="status" class="form-label">Estado</label>
-                        <select name="status" class="form-select" wire:model="status">
-                            <option value="">Seleccione una opción</option>
-                            <option value="ACTIVE">Activo</option>
-                            <option value="LOCKED">Suspendido</option>
-                        </select>
-                        @error('status')
-                        <span class="text-warning">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="col-12 col-lg-6 mb-6">
+                {{ $roleId }}
+                <div class="row">
+                    <div class="col-12 col-lg-12 mb-6">
                         <label for="firstName" class="form-label">Avatar</label>
                         <input type="file" wire:model="photo" class="form-control" accept="image/*">
                         @error('firstName')

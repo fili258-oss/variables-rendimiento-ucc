@@ -21,30 +21,20 @@
                         <span class="text-warning">{{ $message }}</span>
                         @enderror
                     </div>
-                </div>
-                <div class="row g-2">
-                    <div class="col-12 col-lg-6 mb-2">
-                        <label for="profile" class="form-label">Perfil</label>
-                        <select name="profile" class="form-select" wire:model="profile">
-                            <option value="">Seleccione una opción</option>
-                            <option value="ADMIN" {{ $profile =='ADMIN' ? 'selected':'' }}>Administrador</option>
-                            <option value="EMPLOYEE" {{ $profile =='EMPLOYEE' ? 'selected':'' }}>Consultor</option>
+                </div>                                
+                <div class="row">                    
+                    <div class="col-12 col-lg-12 mb-2">
+                        <label for="roleId" class="form-label">Perfil</label>
+                        <select name="roleId" class="form-select" wire:model="roleId">
+                            @foreach($roles as $role)
+                                <option value="{{ $role->id }}" {{ $profile == $role->name ? 'selected':''}}>{{ $role->name }}</option>
+                            @endforeach
+                                                           
                         </select>
-                        @error('profile')
+                        @error('roleId')
                         <span class="text-warning">{{ $message }}</span>
                         @enderror
-                    </div>
-                    <div class="col-12 col-lg-6 mb-4">
-                        <label for="status" class="form-label">Estado</label>
-                        <select name="status" class="form-select" wire:model="status">
-                            <option value="">Seleccione una opción</option>
-                            <option value="ACTIVE">Activo</option>
-                            <option value="LOCKED">Suspendido</option>
-                        </select>
-                        @error('status')
-                        <span class="text-warning">{{ $message }}</span>
-                        @enderror                        
-                    </div>
+                    </div>                                        
                 </div>
                 <div class="row">
                     <div class="col-12 col-lg-12 mb-2">

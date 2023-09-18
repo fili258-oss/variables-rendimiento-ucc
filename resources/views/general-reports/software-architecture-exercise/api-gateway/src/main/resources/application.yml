@@ -1,0 +1,46 @@
+server:
+  port: 8080
+#  servlet:
+#    contextPath: /api
+
+spring:
+  application:
+    name: gateway
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: http://localhost:9411/
+    enabled: true
+    sender:
+      type: web
+    service:
+      name: api-gateway
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+zuul:
+  debug:
+    request: true
+  ignoredServices: "*"
+  prefix: /api
+  routes:
+    crm:
+      path: /crm/**
+      serviceId: crm
+    security:
+      path: /security/**
+      serviceId: security
+    webhook:
+      path: /webhook/**
+      serviceId: webhook
+  sensitiveHeaders: Cookie,Set-Cookie
+  host:
+    socket-timeout-millis: 30000

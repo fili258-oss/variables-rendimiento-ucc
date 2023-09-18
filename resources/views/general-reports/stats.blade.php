@@ -94,8 +94,8 @@
                                 
                             </div>
                             <div>
-                                <p class="mb-n1 mt-1">Reporte del curso de </p>
-                                <small class="text-muted">$39 less than last week</small>
+                                {{-- <p class="mb-n1 mt-1">Curso: </p> --}}
+                                
                             </div>
                         </div>
                     </div>

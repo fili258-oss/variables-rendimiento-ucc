@@ -7,25 +7,25 @@
         @csrf
         <div class="row">
             @if(!is_null($periods))
-            <div wire:ignore class="col-md-6 col-lg-2 col-xl-2 order-0 mb-4">
+            <div class="col-md-6 col-lg-2 col-xl-2 order-0 mb-4">
                 <label class="form-label" for="basic-icon-default-fullname">Período Academico</label>
                 <select id="period" class="form-select form-select-sm" wire:model="selectedPeriod" name="selectedPeriod">
                     <option value="">Seleccione una opción</option>
                     @foreach ($periods as $period)
-                    <option value="{{ $period->academicPeriod }}">{{ $period->academicPeriod }}</option>
+                    <option value="{{ $period }}">{{ $period }}</option>
                     @endforeach
                 </select>
             </div>
             @endif
 
-            @if(!is_null($selectedPeriod))
-            <div wire:ignore class="col-md-6 col-lg-2 col-xl-2 order-1 mb-4">
+            @if(!is_null($facultys))
+            <div class="col-md-6 col-lg-2 col-xl-2 order-1 mb-4">
                 <label class="form-label" for="basic-icon-default-fullname">Programa Facultad</label>
                 <select id="faculty" class="form-select form-select-sm" wire:model="selectedFaculty" name="faculty">
                     <option value="">Seleccione una opción</option>
                     @if(!is_null($facultys))
                     @foreach ($facultys as $faculty)
-                    <option value="{{ $faculty->gradeAcademic }}">{{ $faculty->gradeAcademic }}</option>
+                    <option value="{{ $faculty }}">{{ $faculty }}</option>
                     @endforeach    
                     @endif
                     
@@ -33,14 +33,14 @@
             </div>
             @endif
 
-            @if(!is_null($selectedFaculty))
-            <div wire:ignore class="col-md-6 col-lg-2 col-xl-2 order-1 mb-4">
+            @if(!is_null($courses))
+            <div class="col-md-6 col-lg-2 col-xl-2 order-1 mb-4">
                 <label class="form-label" for="basic-icon-default-fullname">Curso</label>
                 <select id="course" class="form-select form-select-sm" wire:model="selectedCourse" name="faculty">
                     <option value="">Seleccione una opción</option>
                     @if(!is_null($courses))
                     @foreach ($courses as $course)
-                    <option value="{{ $course->nameCourse }}">{{ $course->nameCourse }}</option>
+                    <option value="{{ $course }}">{{ $course }}</option>
                     @endforeach
                     @endif                    
                 </select>
