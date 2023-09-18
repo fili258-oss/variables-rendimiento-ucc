@@ -27,24 +27,30 @@
         <div data-i18n="Basic">Informe General</div>
     </a>
     </li>
+    @can('importReportsGeneral.index')
     <li class="menu-item ">
         <a href="{{ route('importReportsGeneral') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-import"></i>
             <div data-i18n="Basic">Imp Informe General</div>
         </a>
-    </li>
+    </li>        
+    @endcan    
+    @can('importReportsIndividual.index')
     <li class="menu-item ">
         <a href="{{ route('importReportsIndividual') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-user"></i>
             <div data-i18n="Basic">Imp Informe Individual</div>
         </a>
-    </li>
+    </li>        
+    @endcan
+    
     <li class="menu-item ">
         <a href="{{ route('reportsIndividual') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-chart"></i>
             <div data-i18n="Basic">Informe Individual</div>
         </a>
-        </li>           
+    </li>
+    @can('usersList.index')
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Gestión Usuarios</span></li> 
     <!-- User interface -->
     <li class="menu-item">
@@ -64,12 +70,17 @@
             </a>
             </li>            
         </ul>
-    </li>
+    </li>        
+    @endcan           
+    
     <li class="menu-item">
-        <a href="icons-boxicons.html" class="menu-link">
+        <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="menu-link">
             <i class="menu-icon tf-icons bx bx-power-off me-2"></i>
             <div data-i18n="Boxicons">Cerrar sesión</div>
         </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
     </li>
 </ul>
 </aside>

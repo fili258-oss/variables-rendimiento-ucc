@@ -116,11 +116,7 @@ class IndividualStudentsComponent extends Component
     {       
         if (!is_null($gradeAcadmicKey)) {
             $this->courses = DB::table('individual_report_courses')->select('nameCourse')->where('gradeAcademic', $gradeAcadmicKey)->distinct()->pluck('nameCourse');                          
-        }   
-        
-        /* if (empty($gradeAcadmicKey)) {
-                        
-        } */
+        }                   
         
     }    
 
