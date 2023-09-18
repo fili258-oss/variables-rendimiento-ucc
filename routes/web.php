@@ -31,8 +31,8 @@ Route::get('/', function () {
 });
 
 Route::get('admin/escritorio', [HomeController::class, 'index'])->name('escritorio');
-Route::get('admin/importar-informes-generales', GeneralReportsComponent::class)->name('importReportsGeneral')->middleware('auth');
-Route::get('admin/importar-informes-individuales', IndividualCoursesComponent::class)->name('importReportsIndividual')->middleware('auth');
+Route::get('admin/importar-informes-generales', GeneralReportsComponent::class)->name('importReportsGeneral')->middleware('auth','can:importReportsGeneral.index');
+Route::get('admin/importar-informes-individuales', IndividualCoursesComponent::class)->name('importReportsIndividual')->middleware('auth','can:importReportsIndividual.index');
 Route::post('admin/import-report-general', [ImportExportReportGeneralController::class, 'import'])->name('importReports')->middleware('auth');
 Route::post('admin/import-report-individual', [ImportExportIndividualReportsController::class, 'import'])->name('importReportsIndividuals')->middleware('auth');
 
@@ -43,4 +43,4 @@ Route::post('admin/graficar-reportes', [GeneralReportsController::class, 'drawin
 Route::get('admin/informes-cursos-individuales', IndividualStudentsComponent::class)->name('reportsIndividual')->middleware('auth');
 
 /* Gestion de usuarios */
-Route::get('admin/lista-usuarios', UsersComponent::class)->name('usersList')->middleware('auth');
+Route::get('admin/lista-usuarios', UsersComponent::class)->name('usersList')->middleware('auth','can:usersList.index');

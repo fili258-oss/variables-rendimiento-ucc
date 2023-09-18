@@ -22,12 +22,13 @@
                         @enderror
                     </div>
                 </div>                                
-                <div class="row">                    
+                <div class="row"> 
+                    {{ $roles }}                     
                     <div class="col-12 col-lg-12 mb-2">
                         <label for="roleId" class="form-label">Perfil</label>
                         <select name="roleId" class="form-select" wire:model="roleId">
                             @foreach($roles as $role)
-                                <option value="{{ $role->id }}" {{ $profile == $role->name ? 'selected':''}}>{{ $role->name }}</option>
+                                <option value="{{ $role->id }}" {{ $profile === $role->name ? 'selected':''}}>{{ $role->name }}</option>
                             @endforeach
                                                            
                         </select>

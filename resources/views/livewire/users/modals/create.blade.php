@@ -43,8 +43,7 @@
                         <span class="text-warning">{{ $message }}</span>
                         @enderror
                     </div>
-                </div>
-                {{ $roleId }}
+                </div>                
                 <div class="row">
                     <div class="col-12 col-lg-12 mb-6">
                         <label for="firstName" class="form-label">Avatar</label>

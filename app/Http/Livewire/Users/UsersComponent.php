@@ -67,15 +67,11 @@ class UsersComponent extends Component
         $user->password = bcrypt($this->password);
 
         if (!empty($this->photo)) {
-            $tmpImg = $user->image;
-            if ($tmpImg != null && file_exists('storage/users/' . $tmpImg)) {
-                unlink('storage/users/' . $tmpImg);
-            }
-
             $customAvatarName = uniqid() . '.' . $this->photo->extension();
             $this->photo->storeAs('public/users/', $customAvatarName);
             $user->image = 'users/' . $customAvatarName;
         }
+        
 
         $user->save();
 
@@ -88,7 +84,7 @@ class UsersComponent extends Component
     {
 
         $user = User::find($id);
-        $rol = $user->getRoleNames();
+        $rol = $user->roles->first()->name;
         if ($user != '') {
             $this->userId = $user->id;
             $this->name = $user->name;
@@ -118,6 +114,7 @@ class UsersComponent extends Component
         $user = User::find($this->userId);
         $user->name = $this->name;
         $user->email = $this->email;
+        $user->syncRoles([]);
         
         $role = Role::find($this->roleId);
         $user->assignRole($role->name);

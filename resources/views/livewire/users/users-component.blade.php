@@ -38,7 +38,7 @@
                             <th scope="row">{{ $user->id }}</th>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>perfil</td>                                                       
+                            <td>{{ $user->roles->first()->name }}</td>                                                       
                             <td><img src="{{ asset('storage/'.$user->image) }}" class="w-px-40 h-auto rounded-circle"></td>
                             <td>                                
                                 <button class="btn btn-primary btn-sm" wire:click='edit({{ $user->id }})' data-bs-toggle="modal" data-bs-target="#edit-modal">                                    

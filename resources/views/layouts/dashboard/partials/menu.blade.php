@@ -63,12 +63,7 @@
             <a href="{{ route('usersList') }}" class="menu-link">
                 <div data-i18n="Accordion">Usuarios</div>
             </a>
-            </li>
-            <li class="menu-item">
-            <a href="ui-alerts.html" class="menu-link">
-                <div data-i18n="Alerts">Roles</div>
-            </a>
-            </li>            
+            </li>                        
         </ul>
     </li>        
     @endcan           
