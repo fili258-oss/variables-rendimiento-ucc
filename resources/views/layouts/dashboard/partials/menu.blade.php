@@ -43,7 +43,12 @@
         </a>
     </li>        
     @endcan
-    
+    <li class="menu-item ">
+        <a href="{{ route('reportsSitAcademicStudents') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-user"></i>
+            <div data-i18n="Basic">Imp Sit Acádemica</div>
+        </a>
+    </li>
     <li class="menu-item ">
         <a href="{{ route('reportsIndividual') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-chart"></i>

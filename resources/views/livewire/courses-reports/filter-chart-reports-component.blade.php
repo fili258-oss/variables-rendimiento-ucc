@@ -1,7 +1,7 @@
 <div>
     <form action="{{ route('generateCharts') }}" method="POST">
         @csrf
-          <div class="row">               
+          <div class="row py-2">               
             <div class="col-md-6 col-lg-2 col-xl-2 order-0 mb-4">
                 <label class="form-label" for="basic-icon-default-fullname">Período Academico</label>  
                 

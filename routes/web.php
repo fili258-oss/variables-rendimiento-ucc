@@ -12,7 +12,9 @@ use App\Http\Livewire\CoursesReports\GeneralReportsComponent;
 use App\Http\Livewire\CoursesReports\GlobalReportsComponent;
 use App\Http\Livewire\IndividualCoursesReports\IndividualCoursesComponent;
 use App\Http\Livewire\IndividualCoursesReports\IndividualStudentsComponent;
+use App\Http\Livewire\SitAcademicReports\SitAcademicStudentsComponent;
 use App\Http\Livewire\Users\UsersComponent;
+use App\Models\SitAcademicReportStudent;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +43,9 @@ Route::get('admin/informes-globales', GlobalReportsComponent::class)->name('glob
 Route::post('admin/graficar-reportes', [GeneralReportsController::class, 'drawingChart'])->name('generateCharts')->middleware('auth');
 
 Route::get('admin/informes-cursos-individuales', IndividualStudentsComponent::class)->name('reportsIndividual')->middleware('auth');
+
+/* Situación acádemica estudiantes */
+Route::get('admin/importar-situacion-academica', SitAcademicStudentsComponent::class)->name('reportsSitAcademicStudents')->middleware('auth');
 
 /* Gestion de usuarios */
 Route::get('admin/lista-usuarios', UsersComponent::class)->name('usersList')->middleware('auth','can:usersList.index');

@@ -5,7 +5,7 @@
     @endif
     <form>
         @csrf
-        <div class="row">
+        <div class="row py-2">
             @if(!is_null($periods))
             <div class="col-md-6 col-lg-2 col-xl-2 order-0 mb-4">
                 <label class="form-label" for="basic-icon-default-fullname">Período Academico</label>
@@ -54,7 +54,8 @@
                     <option value="1">Reprobados</option>
                 </select>
             </div>
-            <div class="col-md-6 col-lg-4 col-xl-2 order-4 mt-4">                
+            <div class="col-md-6 col-lg-4 col-xl-2 order-4 mt-4"> 
+                
                 <a href="{{ route('reportsIndividual') }}" class="btn btn-danger btn-sm"><i class="bx bx-trash"></i></a>
                 <button class="btn btn-success btn-sm" wire:click='exportRows()' type="button"><i class="bx bx-export"></i></button>
             </div>

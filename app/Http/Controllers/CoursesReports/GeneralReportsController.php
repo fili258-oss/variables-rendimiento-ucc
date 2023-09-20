@@ -14,6 +14,7 @@ class GeneralReportsController extends Controller
     public $cancellations;
     public $repeaters;
     public $totales;
+    public $queryConsulted = false;
 
     public function reports()
     {        
@@ -24,7 +25,8 @@ class GeneralReportsController extends Controller
             'facultys' => $this->getFaculty(),
             'courses' => $this->getCourses(),
             'levelsCourses' => $this->getLevelsAcademics(),
-            'totales' => $this->totales              
+            'totales' => $this->totales,
+            'queryConsulted' => $this->queryConsulted              
 
         ]);
     }
@@ -69,13 +71,18 @@ class GeneralReportsController extends Controller
           ->selectRaw('SUM(notApproved) as notApproveds')
           ->selectRaw('SUM(cancellations) as cancellations')
           ->first();
-         
+        $this->queryConsulted = true;
         return view('general-reports.stats', [
             'periods' => $this->getAcademicsPeriods(),
             'facultys' => $this->getFaculty(),
             'courses' => $this->getCourses(),
             'levelsCourses' => $this->getLevelsAcademics(),
-            'totales' => $this->totales
+            'totales' => $this->totales,
+            'periodConsulted' => $request->period,
+            'facultyConsulted' => $request->faculty,
+            'courseConsulted' => $request->course,
+            'levelConsulted' => $request->level,
+            'queryConsulted' => $this->queryConsulted              
 
         ]);
         
