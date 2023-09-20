@@ -35,7 +35,13 @@
                 <label class="form-label" for="basic-icon-default-fullname">Borrar consulta</label>
                 <a href="{{ route('globalReports') }}" class="btn btn-danger btn-sm"><i class="bx bx-trash"></i></a>
             </div>
-
+            @if(!is_null($selectedPeriod) && !is_null($selectedFaculty))
+            <div class="col-md-6 col-lg-4 col-xl-2 order-4">
+                <label class="form-label" for="basic-icon-default-fullname">Exportar consulta</label>
+                <button class="btn btn-success btn-sm" wire:click="exportToExcel" type="button"><i class="bx bx-export"></i></button>
+            </div>
+            @endif
+            
         </div>
     </form>
     <div class="row">

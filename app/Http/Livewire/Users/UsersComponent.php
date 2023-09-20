@@ -82,15 +82,14 @@ class UsersComponent extends Component
 
     public function edit($id)
     {
-
         $user = User::find($id);
-        $rol = $user->roles->first()->name;
+        
         if ($user != '') {
             $this->userId = $user->id;
             $this->name = $user->name;
             $this->email = $user->email;
             $this->image = $user->image;
-            $this->profile = $rol;
+            $this->roleId = $user->roles->first()->id;
                
         }
        

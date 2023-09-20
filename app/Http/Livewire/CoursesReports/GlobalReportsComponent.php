@@ -2,17 +2,20 @@
 
 namespace App\Http\Livewire\CoursesReports;
 
+use App\Exports\ExportReportsGenerals;
 use App\Models\GeneralReportCourse;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 use Livewire\WithPagination;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ReportExport;
 
 class GlobalReportsComponent extends Component
 {
-    public $academicYears;
+    public $academicYears;    
     public $selectedPeriod = null;
     public $selectedFaculty = null;
-    public $facultys = null;
+    public $facultys = null;    
     public $structuredReports = [];
 
     use WithPagination;
@@ -73,6 +76,36 @@ class GlobalReportsComponent extends Component
         if (!is_null($academicPeriodKey)) {
             $this->facultys = DB::table('general_report_courses')->select('orgAcademic')->where('academicPeriodId', '=', $academicPeriodKey)->distinct()->pluck('orgAcademic');
         }
+        
+    }
+
+    public function exportToExcel()
+    {
+        $exportFileName = 'report_global_courses' . date('Y-m-d_H-i-s') . '.xlsx';
+        
+        // Itera sobre los datos para estructurarlos como se espera en la exportación
+        $dataToExport = [];
+        if ($this->structuredReports != null) {
+            foreach ($this->structuredReports as $academicPeriodId => $semesters) {
+                foreach ($semesters as $levelCourse => $courses) {
+                    foreach ($courses as $course) {
+                        $dataToExport[] = [
+                            'academicPeriodId' => $academicPeriodId,
+                            'levelCourse' => $levelCourse,
+                            'nameCourse' => $course['nameCourse'],
+                            'totalEnrolleds' => $course['totalEnrolleds'],
+                            'totalApproved' => $course['totalApproved'],
+                            'totalNotApproved' => $course['totalNotApproved'],
+                            'totalCancellations' => $course['totalCancellations'],
+                            'totalRepeaters' => $course['totalRepeaters'],
+                        ];
+                    }
+                }
+            }            
+        }
+        
+        $this->structuredReports = null;
+        return Excel::download(new ExportReportsGenerals($dataToExport), $exportFileName);
         
     }
 
