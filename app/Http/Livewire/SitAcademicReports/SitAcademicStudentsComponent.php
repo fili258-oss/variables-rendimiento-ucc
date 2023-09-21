@@ -52,16 +52,7 @@ class SitAcademicStudentsComponent extends Component
             'reports' => $reports
         ])->extends('layouts.app')->section('content');
     }
-
-    public function import(Request $request) 
-    {                 
-                
-        $import = new ImportSitAcademicStudents;
-                            
-        Excel::import($import, request()->file($this->file));
-        $count = $import->getRowCount();        
-        return redirect()->route('importReportsIndividual')->with('success', $count.' Datos importados exitosamente');
-    }
+    
     public function edit($id)
     {        
         $report = SitAcademicReportStudent::find($id);

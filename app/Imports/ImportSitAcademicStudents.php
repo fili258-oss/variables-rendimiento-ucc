@@ -19,25 +19,24 @@ class ImportSitAcademicStudents implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         ++$this->rows;
-        dd($row);
         
         return new SitAcademicReportStudent([
             'site'     => $row['codigo_sede'],
-            'academicPeriod'    => $row['grado_academico'],
-            'gradeAcademic'    => $row['programa_academico'],
-            'orgAcademic'    => $row['plan_acad'],
-            'programAcademic'    => $row['id_estudiante'],
-            'idStudent'    => $row['tipo_documento'],
-            'typeDocument'    => $row['nro_documento'],
-            'numberDocument'    => $row['primer_apellido'],
-            'firstName'    => $row['segundo_apellido'],
-            'lastName'    => $row['primer_nombre'],
-            'firstSurname'    => $row['segundo_nombre'],
-            'lastSurname'    => $row['ciclo_lectivo'],
-            'levelCourse'    => $row['id_curso'],
-            'averageSemester'    => $row['nombre_curso'],
-            'averageAccumulated'    => $row['nro_clase'],
-            'academicSituation'    => $row['calificacion']            
+            'academicPeriod'    => $row['ciclo'],
+            'gradeAcademic'    => $row['grado_academico'],
+            'orgAcademic'    => $row['codigo_programa'],
+            'programAcademic'    => $row['programa_academico'],
+            'idStudent'    => $row['id_estudiante'],
+            'typeDocument'    => $row['tipo_documento'],
+            'numberDocument'    => $row['nro_documento'],
+            'firstName'    => $row['primer_nombre'],
+            'lastName'    => $row['segundo_nombre'],
+            'firstSurname'    => $row['primer_apellido'],
+            'lastSurname'    => $row['segundo_apellido'],
+            'levelCourse'    => $row['nivel_academico'],
+            'averageSemester'    => $row['promedio_semestre'],
+            'averageAccumulated'    => $row['promedio_acumulado'],
+            'academicSituation'    => $row['situacion_academica']            
         ]);
     }
 

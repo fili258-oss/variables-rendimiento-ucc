@@ -9,5 +9,5 @@ class SitAcademicReportStudent extends Model
 {
     use HasFactory;
 
-    protected $filleable = ['site','academicPeriod','gradeAcademic','orgAcademic','programAcademic','idStudent','typeDocument','numberDocument','firstName','lastName','firstSurname','lastSurname','levelCourse','averageSemester','averageAccumulated','academicSituation'];
+    protected $fillable = ['site','academicPeriod','gradeAcademic','orgAcademic','programAcademic','idStudent','typeDocument','numberDocument','firstName','lastName','firstSurname','lastSurname','levelCourse','averageSemester','averageAccumulated','academicSituation'];
 }

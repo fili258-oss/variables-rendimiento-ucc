@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndividualCoursesReports\ImportExportIndividualReportsController;
 use App\Http\Controllers\IndividualCoursesReports\IndividualReportsController;
+use App\Http\Controllers\SitAcademicReports\ImportExportSitAcademicController;
 use App\Http\Livewire\CoursesReports\ChartsReportsComponent;
 use App\Http\Livewire\CoursesReports\GeneralReportsComponent;
 use App\Http\Livewire\CoursesReports\GlobalReportsComponent;
@@ -37,7 +38,7 @@ Route::get('admin/importar-informes-generales', GeneralReportsComponent::class)-
 Route::get('admin/importar-informes-individuales', IndividualCoursesComponent::class)->name('importReportsIndividual')->middleware('auth','can:importReportsIndividual.index');
 Route::post('admin/import-report-general', [ImportExportReportGeneralController::class, 'import'])->name('importReports')->middleware('auth');
 Route::post('admin/import-report-individual', [ImportExportIndividualReportsController::class, 'import'])->name('importReportsIndividuals')->middleware('auth');
-
+Route::post('admin/import-report-sit-academic', [ImportExportSitAcademicController::class, 'import'])->name('importReportsSitAcademic')->middleware('auth');
 Route::get('admin/informes-cursos-generales', [GeneralReportsController::class, 'reports'])->name('reportsGeneral')->middleware('auth');
 Route::get('admin/informes-globales', GlobalReportsComponent::class)->name('globalReports')->middleware('auth');
 Route::post('admin/graficar-reportes', [GeneralReportsController::class, 'drawingChart'])->name('generateCharts')->middleware('auth');

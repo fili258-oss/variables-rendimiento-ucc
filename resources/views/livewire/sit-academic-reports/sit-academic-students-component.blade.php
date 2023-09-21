@@ -7,7 +7,7 @@
     @if(Session::has('success'))
     <div class="alert alert-success"> {{ Session::get('success') }}</div>
     @endif
-    <form wire:submit.prevent="import" enctype="multipart/form-data">
+    <form action="{{ route('importReportsSitAcademic') }}" method="POST" name="importform" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-md-6 col-lg-2 col-xl-4 order-0 mb-4">
@@ -16,7 +16,7 @@
             </div>
             <div class="col-md-6 col-lg-2 col-xl-4 order-0 mb-4">
                 <label class="form-label" for="basic-icon-default-fullname">Informe estudiantes CSV</label>
-                <input type="file" class="form-control" wire:model="file" name="file" id="formFile" />
+                <input type="file" class="form-control" name="file" id="formFile" />
             </div>
             <div class="col-md-6 col-lg-4 col-xl-2 order-1 mt-4">
                 {{-- <button class="btn btn-primary " type="button"><i class='bx bx-check-circle'></i> Importar</button>     --}}
