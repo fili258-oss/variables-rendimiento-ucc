@@ -15,140 +15,117 @@
                         @enderror
                     </div>
                     <div class="col mb-3">
+                        <label for="academicPeriod" class="form-label">Ciclo lectivo</label>
+                        <input type="number" id="academicPeriod" class="form-control" wire:model="academicPeriod" placeholder="Grado Académico" />
+                        @error('academicPeriod')
+                            <span class="text-warning">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col mb-3">
                         <label for="gradeAcademic" class="form-label">Grado académico</label>
-                        <input type="text" id="gradeAcademic" class="form-control" wire:model="gradeAcademic" placeholder="Grado Académico" />
+                        <input type="text" id="gradeAcademic" class="form-control" wire:model="gradeAcademic" placeholder="Programa académico" />
                         @error('gradeAcademic')
                             <span class="text-warning">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col mb-3">
-                        <label for="orgAcademic" class="form-label">Programa académico</label>
-                        <input type="text" id="orgAcademic" class="form-control" wire:model="orgAcademic" placeholder="Programa académico" />
+                        <label for="orgAcademic" class="form-label">Código de programa</label>
+                        <input type="text" id="orgAcademic" class="form-control" wire:model="orgAcademic" placeholder="Plan acad" />
                         @error('orgAcademic')
-                            <span class="text-warning">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="col mb-3">
-                        <label for="planAcademic" class="form-label">Plan acad</label>
-                        <input type="text" id="planAcademic" class="form-control" wire:model="planAcademic" placeholder="Plan acad" />
-                        @error('planAcademic')
                             <span class="text-warning">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
                 <div class="row g-4">
                     <div class="col mb-3">
+                        <label for="programAcademic" class="form-label">Programa acádemico</label>
+                        <input type="text" id="programAcademic" class="form-control" wire:model="programAcademic" placeholder="ID estudiante" />
+                        @error('programAcademic')
+                            <span class="text-warning">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col mb-3">
                         <label for="idStudent" class="form-label">ID estudiante</label>
-                        <input type="text" id="idStudent" class="form-control" wire:model="idStudent" placeholder="ID estudiante" />
+                        <input type="number" id="idStudent" class="form-control" wire:model="idStudent" placeholder="Tipo documento" />
                         @error('idStudent')
                             <span class="text-warning">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col mb-3">
                         <label for="typeDocument" class="form-label">Tipo documento</label>
-                        <input type="text" id="typeDocument" class="form-control" wire:model="typeDocument" placeholder="Tipo documento" />
+                        <input type="text" id="typeDocument" class="form-control" wire:model="typeDocument" placeholder="Nro. documento" />
                         @error('typeDocument')
                             <span class="text-warning">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col mb-3">
-                        <label for="numberDocument" class="form-label">Nro. documento</label>
-                        <input type="text" id="numberDocument" class="form-control" wire:model="numberDocument" placeholder="Nro. documento" />
+                        <label for="numberDocument" class="form-label">Número de documento</label>
+                        <input type="number" id="numberDocument" class="form-control" wire:model="numberDocument" placeholder="Primer apellido" />
                         @error('numberDocument')
-                            <span class="text-warning">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="col mb-3">
-                        <label for="firstSurname" class="form-label">Primer apellido</label>
-                        <input type="text" id="firstSurname" class="form-control" wire:model="firstSurname" placeholder="Primer apellido" />
-                        @error('firstSurname')
                             <span class="text-warning">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
                 <div class="row g-4">
                     <div class="col mb-3">
-                        <label for="lastSurname" class="form-label">Segundo apellido</label>
-                        <input type="text" id="lastSurname" class="form-control" wire:model="lastSurname" placeholder="Segundo apellido" />
-                        @error('lastSurname')
-                            <span class="text-warning">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="col mb-3">
                         <label for="firstName" class="form-label">Primer nombre</label>
-                        <input type="text" id="firstName" class="form-control" wire:model="firstName" placeholder="Primer nombre" />
+                        <input type="text" id="firstName" class="form-control" wire:model="firstName" placeholder="Segundo apellido" />
                         @error('firstName')
                             <span class="text-warning">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col mb-3">
                         <label for="lastName" class="form-label">Segundo nombre</label>
-                        <input type="text" id="lastName" class="form-control" wire:model="lastName" placeholder="Segundo nombre" />
+                        <input type="text" id="lastName" class="form-control" wire:model="lastName" placeholder="Primer nombre" />
                         @error('lastName')
                             <span class="text-warning">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col mb-3">
-                        <label for="academicPeriod" class="form-label">Ciclo lectivo</label>
-                        <input type="text" id="academicPeriod" class="form-control" wire:model="academicPeriod" placeholder="Ciclo lectivo" />
-                        @error('academicPeriod')
+                        <label for="firstSurname" class="form-label">Primer apellido</label>
+                        <input type="text" id="firstSurname" class="form-control" wire:model="firstSurname" placeholder="Segundo nombre" />
+                        @error('firstSurname')
+                            <span class="text-warning">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col mb-3">
+                        <label for="lastSurname" class="form-label">Segundo apellido</label>
+                        <input type="text" id="lastSurname" class="form-control" wire:model="lastSurname" placeholder="Ciclo lectivo" />
+                        @error('lastSurname')
                             <span class="text-warning">{{ $message }}</span>
                         @enderror
                     </div>
                 </div>
                 <div class="row g-4">
                     <div class="col mb-3">
-                        <label for="idCourse" class="form-label">Id curso</label>
-                        <input type="number" id="idCourse" class="form-control" wire:model="idCourse" placeholder="Id curso" />
-                        @error('idCourse')
+                        <label for="levelCourse" class="form-label">Nivel acádemico</label>
+                        <input type="text" id="levelCourse" class="form-control" wire:model="levelCourse" placeholder="Id curso" />
+                        @error('levelCourse')
                             <span class="text-warning">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col mb-3">
-                        <label for="nameCourse" class="form-label">Nombre curso</label>
-                        <input type="text" id="nameCourse" class="form-control" wire:model="nameCourse" placeholder="Nombre curso" />
-                        @error('nameCourse')
-                            <span class="text-warning">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="col mb-3">
-                        <label for="classNumber" class="form-label">No clase</label>
-                        <input type="text" id="classNumber" class="form-control" wire:model="classNumber" placeholder="No clase" />
-                        @error('classNumber')
-                            <span class="text-warning">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="col mb-3">
-                        <label for="qualification" class="form-label">Calificación</label>
-                        <input type="number" id="qualification" class="form-control" wire:model="qualification" placeholder="Calificación" />
-                        @error('qualification')
-                            <span class="text-warning">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="col mb-3">
-                        <label for="numberCredits" class="form-label">Nro. créditos</label>
-                        <input type="number" id="numberCredits" class="form-control" wire:model="numberCredits" placeholder="Nro. créditos" />
-                        @error('numberCredits')
-                            <span class="text-warning">{{ $message }}</span>
-                        @enderror
-                    </div>
-                </div>
-                <div class="row g-4">
-                    <div class="col mb-3">
-                        <label for="typeQualification" class="form-label">Tipo calificación</label>
-                        <input type="text" id="typeQualification" class="form-control" wire:model="typeQualification" placeholder="Tipo calificación" />
-                        @error('typeQualification')
-                            <span class="text-warning">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="col mb-3">
-                        <label for="averageSemester" class="form-label">Promedio Semestre</label>
-                        <input type="number" id="averageSemester" class="form-control" wire:model="averageSemester" placeholder="Promedio Semestre" />
+                        <label for="averageSemester" class="form-label">Promedio semestre</label>
+                        <input type="number" id="averageSemester" class="form-control" wire:model="averageSemester" placeholder="Nombre curso" />
                         @error('averageSemester')
                             <span class="text-warning">{{ $message }}</span>
                         @enderror
                     </div>
-                </div>    
+                    <div class="col mb-3">
+                        <label for="averageAccumulated" class="form-label">Promedio acumulado</label>
+                        <input type="number" id="averageAccumulated" class="form-control" wire:model="averageAccumulated" placeholder="No clase" />
+                        @error('averageAccumulated')
+                            <span class="text-warning">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col mb-3">
+                        <label for="academicSituation" class="form-label">Situación acádemica</label>
+                        <input type="text" id="academicSituation" class="form-control" wire:model="academicSituation" placeholder="Calificación" />
+                        @error('academicSituation')
+                            <span class="text-warning">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>                    
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" wire:click="cancel()" data-bs-dismiss="modal">

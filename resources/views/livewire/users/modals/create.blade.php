@@ -9,14 +9,14 @@
                 <div class="row g-2">
                     <div class="col-12 col-lg-6 mb-6">
                         <label for="name" class="form-label">Nombre</label>
-                        <input type="text" id="name" class="form-control" wire:model="name" placeholder="Nombre de usuario" />
+                        <input type="text" class="form-control" wire:model="name" placeholder="Nombre de usuario" />
                         @error('name')
                         <span class="text-warning">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="col-12 col-lg-6 mb-6">
                         <label for="email" class="form-label">Correo electrónico</label>
-                        <input type="email" id="email" class="form-control" wire:model="email" placeholder="Ingrese el correo" />
+                        <input type="email" class="form-control" wire:model="email" placeholder="Ingrese el correo" />
                         @error('email')
                         <span class="text-warning">{{ $message }}</span>
                         @enderror
@@ -38,7 +38,7 @@
                     </div>                    
                     <div class="col-12 col-lg-6 mb-6">
                         <label for="password" class="form-label">Contraseña</label>
-                        <input type="password" id="password" class="form-control" wire:model="password" placeholder="Ingrese una contraseña" />
+                        <input type="password" class="form-control" wire:model="password" placeholder="Ingrese una contraseña" />
                         @error('password')
                         <span class="text-warning">{{ $message }}</span>
                         @enderror

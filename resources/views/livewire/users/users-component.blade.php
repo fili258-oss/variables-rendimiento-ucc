@@ -5,7 +5,7 @@
 
     @section('title','UniMetrics | Usuarios')    
     
-    <form action="" method="POST" name="importform" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-md-6 col-lg-6 col-xl-6 order-0 mb-4">

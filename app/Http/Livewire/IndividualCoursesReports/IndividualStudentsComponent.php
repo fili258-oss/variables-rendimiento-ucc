@@ -29,6 +29,20 @@ class IndividualStudentsComponent extends Component
         }else{
             $this->ranges = '<';
         }
+                
+        $reportsWithoutPagination = $this->getReportsGeneralNoPagination();
+
+        return view('livewire.individual-courses-reports.individual-students-component',[            
+            'reports' => $this->gerReports(),
+            'periods' => $this->periods,  
+            'countReportsAproveds' => $this->getPercentageAproveds($reportsWithoutPagination),                      
+            'countReportsReproveds' => $this->getPercentageReproveds($reportsWithoutPagination)                   
+
+        ])->extends('layouts.app')->section('content');
+    }
+    
+    public function getReports()
+    {
         $reports  = IndividualReportCourse::where([
             ['academicPeriod', '=', $this->selectedPeriod],
             ['gradeAcademic', '=', $this->selectedFaculty],
@@ -36,15 +50,7 @@ class IndividualStudentsComponent extends Component
             ['qualification', $this->ranges, 3.0],
         ])->paginate(15);
         
-        $reportsWithoutPagination = $this->getReportsGeneralNoPagination();
-
-        return view('livewire.individual-courses-reports.individual-students-component',[            
-            'reports' => $reports,
-            'periods' => $this->periods,  
-            'countReportsAproveds' => $this->getPercentageAproveds($reportsWithoutPagination),                      
-            'countReportsReproveds' => $this->getPercentageReproveds($reportsWithoutPagination)                   
-
-        ])->extends('layouts.app')->section('content');
+        return $reports;
     }
 
     public function getPercentageAproveds($reports)
@@ -128,6 +134,7 @@ class IndividualStudentsComponent extends Component
 
     public function exportRows()
     {
-        return (new UsersExportStudents($this->selectedPeriod,$this->selectedFaculty,$this->selectedCourse,$this->selectedStatus,$this->ranges))->download('invoices.xlsx');
+        $exportFileName = 'report_individual_students' . date('Y-m-d_H-i-s') . '.xlsx';
+        return (new UsersExportStudents($this->selectedPeriod,$this->selectedFaculty,$this->selectedCourse,$this->selectedStatus,$this->ranges))->download($exportFileName);
     }
 }

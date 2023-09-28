@@ -29,6 +29,11 @@ class RolSeeder extends Seeder
         Permission::create(['name' => 'importReportsIndividual.edit'])->assignRole($role1);
         Permission::create(['name' => 'importReportsIndividual.destroy'])->assignRole($role1);
 
+        Permission::create(['name' => 'importReportsSitAcademicStudents.index'])->assignRole($role1);
+        Permission::create(['name' => 'importReportsSitAcademicStudents.import'])->assignRole($role1);
+        Permission::create(['name' => 'importReportsSitAcademicStudents.edit'])->assignRole($role1);
+        Permission::create(['name' => 'importReportsSitAcademicStudents.destroy'])->assignRole($role1);
+
         Permission::create(['name' => 'usersList.index'])->assignRole($role1);
         Permission::create(['name' => 'usersList.create'])->assignRole($role1);
         Permission::create(['name' => 'usersList.edit'])->assignRole($role1);

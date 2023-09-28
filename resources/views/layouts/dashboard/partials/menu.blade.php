@@ -26,7 +26,7 @@
         <i class="menu-icon tf-icons bx bx-chart"></i>
         <div data-i18n="Basic">Informe General</div>
     </a>
-    </li>
+    </li>    
     @can('importReportsGeneral.index')
     <li class="menu-item ">
         <a href="{{ route('importReportsGeneral') }}" class="menu-link">
@@ -44,15 +44,21 @@
     </li>        
     @endcan
     <li class="menu-item ">
-        <a href="{{ route('reportsSitAcademicStudents') }}" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-user"></i>
-            <div data-i18n="Basic">Imp Sit Acádemica</div>
-        </a>
-    </li>
-    <li class="menu-item ">
         <a href="{{ route('reportsIndividual') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-chart"></i>
             <div data-i18n="Basic">Informe Individual</div>
+        </a>
+    </li>
+    <li class="menu-item ">
+        <a href="{{ route('importReportsSitAcademicStudents') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-user"></i>
+            <div data-i18n="Basic">Imp Sit Acádemica</div>
+        </a>
+    </li>    
+    <li class="menu-item ">
+        <a href="{{ route('reportsSitAcademicStudents') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-user"></i>
+            <div data-i18n="Basic">Informe SitAcádemica</div>
         </a>
     </li>
     @can('usersList.index')
@@ -69,7 +75,7 @@
                 <div data-i18n="Accordion">Usuarios</div>
             </a>
             </li>                        
-        </ul>
+        </ul>        
     </li>        
     @endcan           
     
@@ -78,7 +84,7 @@
             <i class="menu-icon tf-icons bx bx-power-off me-2"></i>
             <div data-i18n="Boxicons">Cerrar sesión</div>
         </a>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        <form action="{{ route('logout') }}" method="POST" class="d-none">
             @csrf
         </form>
     </li>
