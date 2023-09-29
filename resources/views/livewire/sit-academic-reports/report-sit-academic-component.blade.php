@@ -63,23 +63,6 @@
             </div>
         </div>
     </form>
-    <div class="row">        
-        <div class="col-sm-5 p-2 bg-white mr-3">
-            {{-- <small>Curso: {{ $selectedCourse }}</small> --}}
-        </div>
-        <div class="col-sm-1 p-2 bg-white">
-            {{-- <small>Ciclo: {{ $selectedPeriod }}</small> --}}
-        </div>
-        <div class="col-sm-2 p-2 bg-white">
-            <small>Total estudiantes:</small>
-        </div>        
-        <div class="col-sm-2 p-2 bg-white">
-            {{-- <small>Aprobados: {{ number_format($countReportsAproveds, 0) }} %</small> --}}
-        </div>
-        <div class="col-sm-2 p-2 bg-white">
-            {{-- <small>Reprobados: {{ number_format($countReportsReproveds, 0) }} %</small> --}}
-        </div>
-    </div>
     <div class="row">
         <!-- Order Statistics -->
         <div class="col-md-12 col-lg-12 col-xl-12 order-0 mb-4 mt-4">

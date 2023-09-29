@@ -149,6 +149,21 @@
                 }
             });
     </script>
+    <script>
+        // Obtiene la ruta actual de la URL
+        var currentPath = window.location.href;
+            
+        // Obtiene todos los elementos <a> dentro de <li> en el menú
+        var menuItems = document.querySelectorAll(".menu-item a");
+    
+        // Itera a través de los elementos del menú y agrega la clase "active" si la ruta coincide
+        menuItems.forEach(function (menuItem) {
+            var menuItemPath = menuItem.getAttribute("href");            
+            if (currentPath === menuItemPath) {
+                menuItem.parentElement.classList.add("active");
+            }
+        });
+    </script>
     
 </body>
 

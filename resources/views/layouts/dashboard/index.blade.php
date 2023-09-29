@@ -13,7 +13,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <div class="d-flex flex-column align-items-center gap-1">
-                        <span>Software para realizar seguimiento academico de estudiantes</span>
+                        <span>Software para realizar seguimiento académico de estudiantes</span>
                     </div>
                   
                 </div>

@@ -15,31 +15,32 @@
 <ul class="menu-inner py-1">
     <!-- Components -->
     <li class="menu-header small text-uppercase"><span class="menu-header-text">Gestión Iformes </span></li>
-    <li class="menu-item ">
+    <li class="menu-item">
         <a href="{{ route('globalReports') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-world"></i>
             <div data-i18n="Basic">Informe Global</div>
         </a>
     </li>
-    <li class="menu-item ">
-    <a href="{{ route('reportsGeneral') }}" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-chart"></i>
-        <div data-i18n="Basic">Informe General</div>
-    </a>
-    </li>    
+        
     @can('importReportsGeneral.index')
     <li class="menu-item ">
         <a href="{{ route('importReportsGeneral') }}" class="menu-link">
             <i class="menu-icon tf-icons bx bx-import"></i>
-            <div data-i18n="Basic">Imp Informe General</div>
+            <div data-i18n="Basic">Import ReportGeneral</div>
         </a>
     </li>        
     @endcan    
+    <li class="menu-item ">
+        <a href="{{ route('reportsGeneral') }}" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-chart"></i>
+            <div data-i18n="Basic">Informe General</div>
+        </a>
+    </li>
     @can('importReportsIndividual.index')
     <li class="menu-item ">
         <a href="{{ route('importReportsIndividual') }}" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-user"></i>
-            <div data-i18n="Basic">Imp Informe Individual</div>
+            <i class="menu-icon tf-icons bx bx-import"></i>
+            <div data-i18n="Basic">Import Notas</div>
         </a>
     </li>        
     @endcan
@@ -49,16 +50,18 @@
             <div data-i18n="Basic">Informe Individual</div>
         </a>
     </li>
+    @can('importReportsSitAcademicStudents.index')
     <li class="menu-item ">
         <a href="{{ route('importReportsSitAcademicStudents') }}" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-user"></i>
-            <div data-i18n="Basic">Imp Sit Acádemica</div>
+            <i class="menu-icon tf-icons bx bx-import"></i>
+            <div data-i18n="Basic">Import SitAcadémica</div>
         </a>
-    </li>    
+    </li>     
+    @endcan       
     <li class="menu-item ">
         <a href="{{ route('reportsSitAcademicStudents') }}" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-user"></i>
-            <div data-i18n="Basic">Informe SitAcádemica</div>
+            <i class="menu-icon tf-icons bx bx-chart"></i>
+            <div data-i18n="Basic">Informe SitAcadémica</div>
         </a>
     </li>
     @can('usersList.index')

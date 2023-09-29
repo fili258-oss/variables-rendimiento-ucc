@@ -3,7 +3,7 @@
         @csrf
           <div class="row py-2">               
             <div class="col-md-6 col-lg-2 col-xl-2 order-0 mb-4">
-                <label class="form-label" for="basic-icon-default-fullname">Período Academico</label>  
+                <label class="form-label" for="basic-icon-default-fullname">Período Académico</label>  
                 
                 <select id="period" class="form-select form-select-sm" wire:model="selectedPeriod" name="period">
                 <option value="">Seleccione una opción</option>
@@ -33,7 +33,7 @@
             @endif
             @if(!is_null($levelsCourses))
             <div class="col-md-6 col-lg-2 col-xl-2 order-2 mb-4">
-                <label class="form-label" for="basic-icon-default-fullname">Nivel Academico</label>            
+                <label class="form-label" for="basic-icon-default-fullname">Nivel Académico</label>            
                     <select id="level" class="form-select form-select-sm" wire:model="selectedLevelCourse" name="level">
                     <option value="">Seleccione una opción</option>
                       @if($levelsCourses)

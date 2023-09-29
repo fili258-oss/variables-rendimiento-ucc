@@ -33,7 +33,7 @@ class IndividualStudentsComponent extends Component
         $reportsWithoutPagination = $this->getReportsGeneralNoPagination();
 
         return view('livewire.individual-courses-reports.individual-students-component',[            
-            'reports' => $this->gerReports(),
+            'reports' => $this->getReports(),
             'periods' => $this->periods,  
             'countReportsAproveds' => $this->getPercentageAproveds($reportsWithoutPagination),                      
             'countReportsReproveds' => $this->getPercentageReproveds($reportsWithoutPagination)                   

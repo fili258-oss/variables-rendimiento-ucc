@@ -13,7 +13,7 @@
           <div class="tab-pane fade show active" id="navs-tabs-line-card-income" role="tabpanel">            
               @if ($queryConsulted)
               <div class="d-flex justify-content-center pt-4 gap-2">
-                <p class="mb-n1 mt-1">Periodo acádemico: {{ $periodConsulted }}</p>
+                <p class="mb-n1 mt-1">Periodo académico: {{ $periodConsulted }}</p>
                 <p class="mb-n1 mt-1">Facultad: {{ $facultyConsulted }}</p>
                 <p class="mb-n1 mt-1">Curso: {{ $courseConsulted }}</p>
                 <p class="mb-n1 mt-1">Nivel curso: {{ $levelConsulted }}</p>
