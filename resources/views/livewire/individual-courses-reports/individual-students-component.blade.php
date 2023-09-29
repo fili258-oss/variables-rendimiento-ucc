@@ -50,7 +50,7 @@
                 <label class="form-label" for="basic-icon-default-fullname">Estado</label>
                 <select id="level" class="form-select form-select-sm" wire:model="selectedStatus" name="level">
                     <option value="">Seleccione una opción</option>
-                    <option value="0">Aprovados</option>
+                    <option value="0">Aprobados</option>
                     <option value="1">Reprobados</option>
                 </select>
             </div>
