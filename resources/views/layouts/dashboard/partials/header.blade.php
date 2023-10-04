@@ -67,12 +67,12 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form-header').submit();">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Cerrar sesión</span>
                         </a>
 
-                        <form action="{{ route('logout') }}" method="POST" class="d-none">
+                        <form action="{{ route('logout') }}" method="POST" class="d-none" id="logout-form-header">
                             @csrf
                         </form>
                     </li>

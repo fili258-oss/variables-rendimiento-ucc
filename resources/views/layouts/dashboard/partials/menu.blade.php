@@ -83,11 +83,11 @@
     @endcan           
     
     <li class="menu-item">
-        <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="menu-link">
+        <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form-menu').submit();" class="menu-link">
             <i class="menu-icon tf-icons bx bx-power-off me-2"></i>
             <div data-i18n="Boxicons">Cerrar sesión</div>
         </a>
-        <form action="{{ route('logout') }}" method="POST" class="d-none">
+        <form action="{{ route('logout') }}" method="POST" class="d-none" id="logout-form-menu">
             @csrf
         </form>
     </li>
