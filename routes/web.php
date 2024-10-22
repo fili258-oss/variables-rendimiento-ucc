@@ -8,6 +8,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndividualCoursesReports\ImportExportIndividualReportsController;
 use App\Http\Controllers\IndividualCoursesReports\IndividualReportsController;
 use App\Http\Controllers\SitAcademicReports\ImportExportSitAcademicController;
+use App\Http\Livewire\AppointmentModule\Appointments\AppointmentsComponent;
+use App\Http\Livewire\AppointmentModule\Students\StudentsComponent;
 use App\Http\Livewire\CoursesReports\ChartsReportsComponent;
 use App\Http\Livewire\CoursesReports\GeneralReportsComponent;
 use App\Http\Livewire\CoursesReports\GlobalReportsComponent;
@@ -52,3 +54,7 @@ Route::get('admin/informes-situacion-academica', ReportSitAcademicComponent::cla
 
 /* Gestion de usuarios */
 Route::get('admin/lista-usuarios', UsersComponent::class)->name('usersList')->middleware('auth','can:usersList.index');
+
+//Rutas para gestionar citas psicológicas
+Route::get('admin/estudiantes-enlace', StudentsComponent::class)->name('studentsEnlace')->middleware('auth');
+Route::get('admin/citas-enlace', AppointmentsComponent::class)->name('appoinmentsEnlace')->middleware('auth');

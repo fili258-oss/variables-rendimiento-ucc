@@ -27,9 +27,7 @@ class ReportSitAcademicComponent extends Component
         return view('livewire.sit-academic-reports.report-sit-academic-component',[
             'reports' => $this->getReports()
             
-        ])
-        
-        ->extends('layouts.app')->section('content');
+        ])->extends('layouts.app')->section('content');
     }
 
     public function getReports(){

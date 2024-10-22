@@ -91,5 +91,19 @@
             @csrf
         </form>
     </li>
+        <!-- Components -->
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Gestión Citas </span></li>
+        <li class="menu-item">
+            <a href="{{ route('studentsEnlace') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div data-i18n="Basic">Estudiantes Enlace</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{ route('appoinmentsEnlace') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-calendar"></i>
+                <div data-i18n="Basic">Citas Enlace</div>
+            </a>
+        </li>
 </ul>
 </aside>
