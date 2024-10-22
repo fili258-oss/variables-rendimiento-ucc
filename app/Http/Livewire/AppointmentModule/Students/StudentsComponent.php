@@ -30,7 +30,7 @@ class StudentsComponent extends Component
         $selectedCountryBirth = null,
         $selectedTownBirth = null,
         $selectedCityBirth = null,
-        $countries = [],
+        $programs = null,        
         $towns = [],
         $cities = [],
         $programId,
@@ -44,9 +44,9 @@ class StudentsComponent extends Component
         $civilStatusId,
         $dateOfBirth,        
         $email,
-        $semesterId,
-        $programs = null,
-        $steep = 0;
+        $semesterId,        
+        $steep = 0,
+        $studentId;
     
     use WithPagination;
     protected $paginationTheme = 'bootstrap';         
@@ -162,6 +162,8 @@ class StudentsComponent extends Component
     public function edit($id)
     {
         $student = Student::find($id);
+        $this->studentId = $student->id;
+
         if($student != "")
         {
             $this->name = $student->name;
@@ -171,17 +173,21 @@ class StudentsComponent extends Component
             $this->studentCode = $student->student_code;
             $this->phone = $student->phone;
             $this->placeOfExpedition = $student->place_of_expedition;
+            $this->stratum = $student->stratum;
             $this->civilStatusId = $student->civil_status_id;
             $this->dateOfBirth = $student->date_of_birth;
-            $this->selectedCountryBirth = $student->country_birth_id;
-            
-            $this->selectedTownBirth = $student->town_birth_id;
-            $this->selectedCityBirth = $student->city_birth_id;
+            $this->selectedCountryBirth = $student->countryBirth->id;
+            $this->setTownsEdit($student->countryBirth->id);            
+            $this->selectedTownBirth = $student->townBirth->id;
+            $this->setCityEdit($student->townBirth->id);
+            $this->selectedCityBirth = $student->cityBirth->id;
             $this->address = $student->address;
             $this->localityComuna = $student->locality_comuna;
             $this->studyDay = $student->study_day;
             $this->genderId = $student->gender_id;
-            $this->programId = $student->program_id;
+            $this->selectedFaculty = $student->faculty->id;
+            $this->setProgramsEdit($student->program->id);
+            $this->programId = $student->program->id;            
             $this->semesterId = $student->semester_id;
             $this->typeDocumentId = $student->type_document_id;            
             
@@ -192,8 +198,10 @@ class StudentsComponent extends Component
 
     public function update()
     {
+        
         try {
             // Intentamos validar los datos
+            $student = Student::find($this->studentId);
             $this->validate([
                 'genderId' => 'required',
                 'name' => 'required|max:60',
@@ -204,7 +212,7 @@ class StudentsComponent extends Component
                 'programId' => 'required',
                 'studentCode' => 'required|numeric',
                 'phone' => 'required|max:10',
-                'email' => 'required|unique:students|email',
+                'email' => $student->email === $this->email ? 'required|email' : 'required|unique:students|email',
                 'semesterId' => 'required',
             ], [], [
                 'genderId' => 'género',
@@ -219,9 +227,7 @@ class StudentsComponent extends Component
                 'email' => 'correo',
                 'semesterId' => 'semestre'
             ]);
-
-            // Si la validación es exitosa, continuamos con la creación del estudiante
-            $student = new Student();
+            
             $student->active = 1;            
             $student->name = $this->name;
             $student->lastname = $this->lastname;
@@ -273,6 +279,24 @@ class StudentsComponent extends Component
     {
 
 
+    }
+
+    public function setProgramsEdit($idFaculty)
+    {
+        $this->programs = Program::where("faculty_id",$idFaculty)
+        ->where("active",1)->get();
+    }
+
+    public function setTownsEdit($idCountry)
+    {
+        $this->towns = Town::where("country_id",$idCountry)
+        ->where("active",1)->get();
+    }
+
+    public function setCityEdit($idTown)
+    {
+        $this->cities = City::where("town_id",$idTown)
+        ->where("active",1)->get();
     }
 
     public function nextSteep()
