@@ -19,7 +19,7 @@
                         @if(!is_null($students))
                         <div>
                             @foreach($students as $student)
-                                <div class="alert alert-info" value="{{ $student->id }}">{{ $student->name }}</div>
+                                <div class="alert alert-info mt-2" value="{{ $student->id }}">{{ $student->name }} {{ $student->lastname }} ({{ $student->identification }})</div>
                             @endforeach
                         </div>
                         @endif

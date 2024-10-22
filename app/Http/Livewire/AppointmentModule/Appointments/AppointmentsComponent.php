@@ -38,7 +38,22 @@ class AppointmentsComponent extends Component
     public function updatedsearchStudents($Query)
     {
         $this->students = Student::select('students.*')        
-        ->where('students.identification', 'like', '%' . $Query . '%')->orderBy('students.name', 'asc')->get();
+        ->where('students.identification', 'like', '%' . $Query . '%')
+        ->orWhere('students.name', 'like', '%' . $Query . '%')
+        ->orWhere('students.lastname', 'like', '%' . $Query . '%')
+        ->orderBy('students.name', 'asc')->get();
         
+    }
+
+    public function resetInputFields()
+    {
+        
+    }
+    public function cancel()
+    {        
+        $this->resetInputFields();        
+        $this->resetErrorBag();
+        $this->resetValidation();        
+        $this->emit('close-modal');
     }
 }
