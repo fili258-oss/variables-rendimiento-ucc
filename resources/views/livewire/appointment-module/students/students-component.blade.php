@@ -57,12 +57,12 @@
                                     Editar
                                 </button>
                                 @if($student->active == 1)                                    
-                                    <button class="btn btn-danger btn-sm" wire:click='deactivate({{ $student->id }})' data-bs-toggle="modal" data-bs-target="#delete-modal">
+                                    <button class="btn btn-danger btn-sm" wire:click='enable({{ $student->id }})' data-bs-toggle="modal" data-bs-target="#delete-modal">
                                         <i class="fa fa-trash"></i>
                                         Desactivar
                                     </button>
                                 @elseif($student->active == 0)
-                                <button class="btn btn-success btn-sm" wire:click='enable({{ $student->id }})'>
+                                <button class="btn btn-success btn-sm" wire:click='activate({{ $student->id }})'>
                                     <i class="fa fa-trash"></i>
                                     Activar
                                 </button>

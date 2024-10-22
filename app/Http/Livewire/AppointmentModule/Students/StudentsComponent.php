@@ -46,7 +46,8 @@ class StudentsComponent extends Component
         $email,
         $semesterId,        
         $steep = 0,
-        $studentId;
+        $studentId,
+        $student = null;
     
     use WithPagination;
     protected $paginationTheme = 'bootstrap';         
@@ -250,11 +251,10 @@ class StudentsComponent extends Component
             $student->program_id = $this->programId;
             $student->semester_id = $this->semesterId;
             $student->type_document_id = $this->typeDocumentId;
-            $student->uptdate();
-
+            $student->update();
             // Emitimos un evento y mostramos un mensaje de éxito
             $this->emit('close-modal');
-            $this->dispatchBrowserEvent('alert', ['type' => 'success', 'message' => 'Estudiante creado exitosamente']);
+            $this->dispatchBrowserEvent('alert', ['type' => 'success', 'message' => 'Estudiante actualizado exitosamente']);
             $this->resetInputFields();
 
         } catch (\Illuminate\Validation\ValidationException $e) {
@@ -277,7 +277,32 @@ class StudentsComponent extends Component
 
     public function resetInputFields()
     {
-
+        $this->student = null;
+        $this->studentId = "";
+        $this->name = "";
+        $this->lastname = "";
+        $this->identification ="";
+        $this->email = "";
+        $this->studentCode = "";
+        $this->phone = "";
+        $this->placeOfExpedition = "";
+        $this->stratum = "";
+        $this->civilStatusId = "";
+        $this->dateOfBirth = "";
+        $this->selectedCountryBirth = "";
+        $this->towns = [];            
+        $this->selectedTownBirth = "";
+        $this->cities = [];
+        $this->selectedCityBirth = "";
+        $this->address = "";
+        $this->localityComuna = "";
+        $this->studyDay = "";
+        $this->genderId = "";
+        $this->selectedFaculty = "";
+        $this->programs = [];
+        $this->programId = "";            
+        $this->semesterId = "";
+        $this->typeDocumentId = "";
 
     }
 
@@ -297,6 +322,38 @@ class StudentsComponent extends Component
     {
         $this->cities = City::where("town_id",$idTown)
         ->where("active",1)->get();
+    }
+
+    public function updatedselectedCountryBirth($idCountry)
+    {
+        $this->towns = Town::where("country_id",$idCountry)
+        ->where("active",1)->get();
+    }
+
+    public function updatedselectedTownBirth($idTown)
+    {
+        $this->cities = City::where("town_id",$idTown)
+        ->where("active",1)->get();
+    }
+
+    public function enable($idStudent)
+    {
+        $this->studentId = $idStudent;
+        $this->student = Student::find($idStudent);                
+    }
+
+    public function activate($idStudent)
+    {
+        Student::where("id", $idStudent)->update(["active" => 1]);
+    }
+
+    public function desable()
+    {
+        
+        Student::where("id", $this->studentId)->update(["active" => 0]);
+        $this->emit('close-modal');
+        $this->dispatchBrowserEvent('alert', ['type' => 'success', 'message' => 'Usuario desactivado exitosamente']);
+        $this->resetInputFields();
     }
 
     public function nextSteep()

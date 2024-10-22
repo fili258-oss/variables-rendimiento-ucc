@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col mb-6">
                         @if(isset($student->name))
-                            <h3 for="nameBackdrop" class="form-control" style="color: red">¿Confirmas desactivar al estudiante {{ $student->name }}?</h3>
+                            <h3 for="nameBackdrop" class="form-control" style="color: red">¿Confirmas desactivar al estudiante {{ $student->name }} {{ $student->lastname }} ({{ $student->identification }})?</h3>
                         @endif
                     </div>
                 </div>
