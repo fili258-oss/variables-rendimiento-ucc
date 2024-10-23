@@ -8,6 +8,26 @@
             <div class="modal-body">
                 <div class="row g-2">
                     <div class="col-12 col-lg-6 mb-6">
+                        <label for="typeDocumentId" class="form-label">Tipo de documento</label>
+                        <select name="typeDocumentId" class="form-select" wire:model.lazy="typeDocumentId">
+                            <option value="" selected>Seleccione una opción</option>
+                            @foreach($typesDocuments as $typeDocument)
+                                <option value="{{ $typeDocument->id }}">{{ $typeDocument->name }}</option>
+                            @endforeach
+                                                           
+                        </select>
+                        @error('typeDocumentId')
+                        <span class="text-warning">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-12 col-lg-6 mb-6">
+                        <label for="identification" class="form-label">Identificación</label>
+                        <input type="text" class="form-control" wire:model.lazy="identification" placeholder="Ingrese la identificación">
+                        @error('identification')
+                        <span class="text-warning">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-12 col-lg-6 mb-6">
                         <label for="name" class="form-label">Nombre</label>
                         <input type="text" class="form-control" wire:model="name" placeholder="Nombre de usuario" />
                         @error('name')
@@ -15,6 +35,13 @@
                         @enderror
                     </div>
                     <div class="col-12 col-lg-6 mb-6">
+                        <label for="lastname" class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" wire:model="lastname" placeholder="Apellidos del usuario" />
+                        @error('lastname')
+                        <span class="text-warning">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-12 col-lg-12 mb-6">
                         <label for="email" class="form-label">Correo electrónico</label>
                         <input type="email" class="form-control" wire:model="email" placeholder="Ingrese el correo" />
                         @error('email')
@@ -45,10 +72,23 @@
                     </div>
                 </div>                
                 <div class="row">
-                    <div class="col-12 col-lg-12 mb-6">
+                    <div class="col-12 col-lg-6 mb-6">
                         <label for="firstName" class="form-label">Avatar</label>
                         <input type="file" wire:model="photo" class="form-control" accept="image/*">
                         @error('firstName')
+                        <span class="text-warning">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-12 col-lg-6 mb-6">
+                        <label for="genderId" class="form-label">Género</label>
+                        <select name="genderId" class="form-select" wire:model.lazy="genderId">
+                            <option value="">Seleccione una opción</option>
+                            @foreach($genders as $gender)
+                                <option value="{{ $gender->id }}">{{ $gender->name }}</option>
+                            @endforeach
+                                                           
+                        </select>
+                        @error('genderId')
                         <span class="text-warning">{{ $message }}</span>
                         @enderror
                     </div>

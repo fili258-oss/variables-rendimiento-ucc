@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\Users;
 
+use App\Models\AppointmentModule\Gender;
+use App\Models\AppointmentModule\TypeDocuments;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
@@ -19,11 +21,15 @@ class UsersComponent extends Component
 
     public
         $name,
+        $lastname,
         $email,
         $photo,
         $image,
         $password,
         $userId,
+        $genderId,
+        $typeDocumentId,
+        $identification,
         $roles,
         $roleId,
         $profile;
@@ -36,9 +42,13 @@ class UsersComponent extends Component
     public function render()
     {
         $this->roles = Role::all();
+        $genders = Gender::where("active", 1)->get();
+        $typesDocuments = TypeDocuments::where("active",1)->get();
         $users = User::where('name', 'like', '%' . $this->search . '%')->orderBy('id', 'desc')->paginate(15);
         return view('livewire.users.users-component', [
-            'users' => $users
+            'users' => $users,
+            'genders' => $genders,
+            "typesDocuments" => $typesDocuments,
         ])->extends('layouts.app')->section('content');
     }
 
@@ -46,21 +56,31 @@ class UsersComponent extends Component
     {
         $this->validate([
             'name' => 'required|max:30',
+            'lastname' => 'required|max:30',
             'email' => 'required|unique:users|email',
             'roleId' => 'required',
-            'password' => 'required|min:5'
+            'password' => 'required|min:5',
+            'identification' => 'required|max:12',
+            'typeDocumentId' => 'required'
 
         ], [], [
             'name' => 'nombre',
+            'lastname' => 'apellidos',
             'email' => 'correo',
-            'roleId' => 'perfil',            
-            'password' => 'contraseña'
+            'roleId' => 'perfil',
+            'genderId' => 'género',            
+            'password' => 'contraseña',
+            'identification' => 'identificación',
+            'typeDocumentId' => 'tipo de documento'
         ]);
 
         $user = new User();
         $user->name = $this->name;
+        $user->lastname = $this->lastname;
+        $user->type_document = $this->typeDocumentId;
+        $user->identification = $this->identification;
         $user->email = $this->email;
-
+        $user->gender_id = $this->genderId;
         $role = Role::find($this->roleId);
         $user->assignRole($role->name);
 
@@ -86,7 +106,11 @@ class UsersComponent extends Component
         
         if ($user != '') {
             $this->userId = $user->id;
+            $this->genderId = $user->gender_id;
             $this->name = $user->name;
+            $this->lastname = $user->lastname;
+            $this->typeDocumentId = $user->type_document;
+            $this->identification = $user->identification;
             $this->email = $user->email;
             $this->image = $user->image;
             $this->roleId = $user->roles->first()->id;
@@ -99,20 +123,31 @@ class UsersComponent extends Component
     {
         $this->validate([
             'name' => 'required|max:30',
+            'lastname' => 'required|max:30',
             'email' => 'required|unique:users,email,' . $this->userId,
             'roleId' => 'required',
-            'password' => 'min:5'
+            'password' => 'min:5',
+            'identification' => 'required|max:12',
+            'typeDocumentId' => 'required'
 
         ], [], [
             'name' => 'nombre',
+            'lastname' => 'apellidos',
             'email' => 'correo',
             'roleId' => 'perfil',
-            'password' => 'contraseña'
+            'genderId' => 'género',
+            'password' => 'contraseña',
+            'identification' => 'identificación',
+            'typeDocumentId' => 'tipo de documento'
         ]);
 
         $user = User::find($this->userId);
         $user->name = $this->name;
+        $user->lastname = $this->lastname;
+        $user->type_document = $this->typeDocumentId;
+        $user->identification = $this->identification;
         $user->email = $this->email;
+        $user->gender_id = $this->genderId;
         $user->syncRoles([]);
         
         $role = Role::find($this->roleId);
@@ -156,10 +191,14 @@ class UsersComponent extends Component
     public function resetInputFields()
     {
         $this->name = '';
+        $this->lastname = '';
+        $this->typeDocumentId = '';
+        $this->identification = '';
         $this->email = '';
         $this->password = '';
         $this->photo = '';
         $this->userId = '';
+        $this->genderId = '';
         
     }
 

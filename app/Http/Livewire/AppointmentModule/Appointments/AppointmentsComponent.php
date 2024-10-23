@@ -4,6 +4,7 @@ namespace App\Http\Livewire\AppointmentModule\Appointments;
 
 use App\Models\AppointmentModule\ScheduledAppoinment;
 use App\Models\AppointmentModule\Student;
+use App\Models\AppointmentModule\TypeConsultation;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -11,7 +12,12 @@ class AppointmentsComponent extends Component
 {
     public $search, $searchStudents;
     public 
-        $students;
+        $students,
+        $typeConsultationId,
+        $scheduledDate,
+        $scheduledTime,
+        $referralDocument,
+        $status;
     
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
@@ -19,10 +25,12 @@ class AppointmentsComponent extends Component
     public function render()
     {
         $allAppointments = $this->getAppointments();
-        $students = Student::where("active",1)->get();
+        $students = Student::where("active", 1)->get();
+        $typeConsultations = TypeConsultation::where("active", 1)->get();
         return view('livewire.appointment-module.appointments.appointments-component', [
             "appoinments" => $allAppointments,
-            "students" => $students
+            "students" => $students,
+            "typeConsultations" => $typeConsultations
         ])->extends('layouts.app')->section('content');
     }
 

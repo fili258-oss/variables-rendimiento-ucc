@@ -16,34 +16,36 @@ class RolSeeder extends Seeder
      */
     public function run()
     {
-        $role1 = Role::create(['name' => 'Admin']);
-        $role2 = Role::create(['name' => 'Advisor']);
+        // Verifica si los roles ya existen antes de crearlos
+        $role1 = Role::firstOrCreate(['name' => 'Admin']);
+        $role2 = Role::firstOrCreate(['name' => 'Advisor']);
+        $role3 = Role::firstOrCreate(['name' => 'Teacher']);
+        $role4 = Role::firstOrCreate(['name' => 'Psychologist']);
 
-        Permission::create(['name' => 'importReportsGeneral.index'])->assignRole($role1);
-        Permission::create(['name' => 'importReportsGeneral.import'])->assignRole($role1);
-        Permission::create(['name' => 'importReportsGeneral.edit'])->assignRole($role1);
-        Permission::create(['name' => 'importReportsGeneral.destroy'])->assignRole($role1);
+        // Asignación de permisos como ya lo haces
+        Permission::firstOrCreate(['name' => 'importReportsGeneral.index'])->assignRole($role1);
+        Permission::firstOrCreate(['name' => 'importReportsGeneral.import'])->assignRole($role1);
+        Permission::firstOrCreate(['name' => 'importReportsGeneral.edit'])->assignRole($role1);
+        Permission::firstOrCreate(['name' => 'importReportsGeneral.destroy'])->assignRole($role1);
 
-        Permission::create(['name' => 'importReportsIndividual.index'])->assignRole($role1);
-        Permission::create(['name' => 'importReportsIndividual.import'])->assignRole($role1);
-        Permission::create(['name' => 'importReportsIndividual.edit'])->assignRole($role1);
-        Permission::create(['name' => 'importReportsIndividual.destroy'])->assignRole($role1);
+        Permission::firstOrCreate(['name' => 'importReportsIndividual.index'])->assignRole($role1);
+        Permission::firstOrCreate(['name' => 'importReportsIndividual.import'])->assignRole($role1);
+        Permission::firstOrCreate(['name' => 'importReportsIndividual.edit'])->assignRole($role1);
+        Permission::firstOrCreate(['name' => 'importReportsIndividual.destroy'])->assignRole($role1);
 
-        Permission::create(['name' => 'importReportsSitAcademicStudents.index'])->assignRole($role1);
-        Permission::create(['name' => 'importReportsSitAcademicStudents.import'])->assignRole($role1);
-        Permission::create(['name' => 'importReportsSitAcademicStudents.edit'])->assignRole($role1);
-        Permission::create(['name' => 'importReportsSitAcademicStudents.destroy'])->assignRole($role1);
+        Permission::firstOrCreate(['name' => 'importReportsSitAcademicStudents.index'])->assignRole($role1);
+        Permission::firstOrCreate(['name' => 'importReportsSitAcademicStudents.import'])->assignRole($role1);
+        Permission::firstOrCreate(['name' => 'importReportsSitAcademicStudents.edit'])->assignRole($role1);
+        Permission::firstOrCreate(['name' => 'importReportsSitAcademicStudents.destroy'])->assignRole($role1);
 
-        Permission::create(['name' => 'usersList.index'])->assignRole($role1);
-        Permission::create(['name' => 'usersList.create'])->assignRole($role1);
-        Permission::create(['name' => 'usersList.edit'])->assignRole($role1);
-        Permission::create(['name' => 'usersList.destroy'])->assignRole($role1);
+        Permission::firstOrCreate(['name' => 'usersList.index'])->assignRole($role1);
+        Permission::firstOrCreate(['name' => 'usersList.create'])->assignRole($role1);
+        Permission::firstOrCreate(['name' => 'usersList.edit'])->assignRole($role1);
+        Permission::firstOrCreate(['name' => 'usersList.destroy'])->assignRole($role1);
 
-        
-        Permission::create(['name' => 'globalReports.index'])->syncRoles([$role1, $role2]);
-        Permission::create(['name' => 'reportsGeneral.index'])->syncRoles([$role1, $role2]);
-        Permission::create(['name' => 'reportsIndividual.index'])->syncRoles([$role1, $role2]);
-
-        
+        Permission::firstOrCreate(['name' => 'globalReports.index'])->syncRoles([$role1, $role2]);
+        Permission::firstOrCreate(['name' => 'reportsGeneral.index'])->syncRoles([$role1, $role2]);
+        Permission::firstOrCreate(['name' => 'reportsIndividual.index'])->syncRoles([$role1, $role2]);
     }
 }
+    
