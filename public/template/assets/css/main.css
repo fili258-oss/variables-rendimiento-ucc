@@ -1,0 +1,20 @@
+.itemList{
+    cursor: pointer;
+    background-color: #e7e7ff;
+    border-radius: 8px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom:2px;
+    padding-top:2px;
+}
+
+.itemListSelected{
+    
+    background-color: #e8fadf;
+    color: #71dd37;
+    border-radius: 8px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom:2px;
+    padding-top:2px;
+}

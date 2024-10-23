@@ -18,14 +18,25 @@
                         @enderror
                         @if(!is_null($students))
                         <div class="d-grid">
-                        @foreach($students as $student)
-                            <!--<div class="alert alert-info mt-2"></div>-->                                
-                            <button type="button" class="btn btn-sm btn-outline-success mt-2">{{ $student->name }} {{ $student->lastname }} ({{ $student->identification }})</button>
-                            
+                        @foreach($students as $student)                                                            
+                            <div class="itemList mt-2" wire:click="assignStudent({{ $student->id }})"><small>{{ $student->name }} {{ $student->lastname }} ({{ $student->identification }})</small></div>                            
                         @endforeach
                         </div>
                         @endif
+                        
                     </div>
+                    @if(!is_null($student))
+                        <div class="itemListSelected d-flex justify-content-between align-items-center">
+                            <div class="flex-grow-1">
+                                <small>{{ $student->name }} {{ $student->lastname }} ({{ $student->identification }})</small>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-sm rounded-pill btn-icon btn-danger" wire:click="removeStudent()">
+                                    <i class='bx bx-x-circle'></i>
+                                </button>
+                            </div>
+                        </div>
+                    @endif
                     <div class="col-12 col-lg-6 mb-6">
                         <label for="selectedCountryBirth" class="form-label">Motivo de consulta</label>
                         <select name="selectedCountryBirth" class="form-select" wire:model.lazy="typeConsultationId">
